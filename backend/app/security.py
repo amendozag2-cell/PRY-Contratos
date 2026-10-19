@@ -6,19 +6,19 @@ import jwt
 from app.config import settings
 
 
-def hash_password(password: str) -> str:
-    return bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
+def hash_clave(clave: str) -> str:
+    return bcrypt.hashpw(clave.encode(), bcrypt.gensalt()).decode()
 
 
-def verify_password(password: str, hashed: str) -> bool:
-    return bcrypt.checkpw(password.encode(), hashed.encode())
+def verificar_clave(clave: str, clave_hash: str) -> bool:
+    return bcrypt.checkpw(clave.encode(), clave_hash.encode())
 
 
-def create_access_token(user_id: int, role: str) -> str:
-    expire = datetime.now(timezone.utc) + timedelta(minutes=settings.jwt_expire_minutes)
-    payload = {"sub": str(user_id), "role": role, "exp": expire}
-    return jwt.encode(payload, settings.jwt_secret, algorithm=settings.jwt_algorithm)
+def crear_token(id_usuario: int, rol: str, minutos: int) -> str:
+    expira = datetime.now(timezone.utc) + timedelta(minutes=minutos)
+    datos = {"sub": str(id_usuario), "rol": rol, "exp": expira}
+    return jwt.encode(datos, settings.jwt_secret, algorithm=settings.jwt_algorithm)
 
 
-def decode_token(token: str) -> dict:
+def decodificar_token(token: str) -> dict:
     return jwt.decode(token, settings.jwt_secret, algorithms=[settings.jwt_algorithm])

@@ -1,34 +1,57 @@
+import re
 from datetime import datetime
+from decimal import Decimal
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, EmailStr, Field, model_validator
-
-from app.models import ContractStatus, UserRole
+from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator, model_validator
 
 
-class UserCreate(BaseModel):
-    email: EmailStr
-    full_name: str = Field(min_length=2, max_length=150)
-    password: str = Field(min_length=8, max_length=64)
-    role: Literal["freelancer", "pyme"] = "freelancer"
-    company_name: str | None = Field(default=None, max_length=150)
+# --------------------------------------------------------------- seguridad
+class UsuarioCrear(BaseModel):
+    model_config = ConfigDict(str_strip_whitespace=True)
+
+    correo: EmailStr
+    nombres: str = Field(min_length=2, max_length=80)
+    apellidos: str = Field(min_length=2, max_length=80)
+    clave: str = Field(min_length=8, max_length=64)
+    rol: Literal["FREELANCER", "PYME"] = "FREELANCER"
+    nombre_empresa: str | None = Field(default=None, max_length=150)
+    ruc_empresa: str | None = None
+
+    @field_validator("nombre_empresa", "ruc_empresa", mode="before")
+    @classmethod
+    def vacio_a_nulo(cls, valor):
+        return None if isinstance(valor, str) and not valor.strip() else valor
+
+    @field_validator("ruc_empresa")
+    @classmethod
+    def validar_ruc(cls, valor):
+        if valor is not None and not re.fullmatch(r"\d{13}", valor):
+            raise ValueError("El RUC debe tener 13 dígitos")
+        return valor
 
     @model_validator(mode="after")
-    def pyme_requires_company(self):
-        if self.role == "pyme" and not self.company_name:
-            raise ValueError("Las PYMEs deben indicar el nombre de la empresa")
+    def validar_empresa(self):
+        if self.rol == "PYME":
+            if not self.nombre_empresa:
+                raise ValueError("Las PYMEs deben indicar el nombre de la empresa")
+        else:
+            self.nombre_empresa = None
+            self.ruc_empresa = None
         return self
 
 
-class UserOut(BaseModel):
+class UsuarioSalida(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
-    id: int
-    email: EmailStr
-    full_name: str
-    role: UserRole
-    company_name: str | None
-    created_at: datetime
+    id_usuario: int
+    correo: str
+    nombres: str
+    apellidos: str
+    rol: str = Field(validation_alias="codigo_rol")
+    nombre_empresa: str | None
+    ruc_empresa: str | None
+    fecha_creacion: datetime
 
 
 class Token(BaseModel):
@@ -36,12 +59,46 @@ class Token(BaseModel):
     token_type: str = "bearer"
 
 
-class ContractOut(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
+# --------------------------------------------------------------- contratos
+class ContratoSalida(BaseModel):
+    id_contrato: int
+    nombre_archivo: str
+    numero_paginas: int | None
+    estado_analisis: str
+    puntaje_riesgo_global: Decimal | None
+    fecha_creacion: datetime
 
-    id: int
-    original_filename: str
-    page_count: int | None
-    status: ContractStatus
-    global_risk_score: float | None
-    created_at: datetime
+
+# ----------------------------------------------------------- administración
+class OpcionCatalogo(BaseModel):
+    codigo: str
+    nombre: str
+
+
+class AuditoriaSalida(BaseModel):
+    id_auditoria: int
+    correo_usuario: str | None
+    accion: str
+    accion_nombre: str
+    tabla_afectada: str | None
+    id_registro: int | None
+    resultado: Literal["EXITO", "FALLO"]
+    datos_anteriores: dict | None
+    datos_nuevos: dict | None
+    observacion: str | None
+    direccion_ip: str | None
+    fecha_evento: datetime
+
+
+class AuditoriaPagina(BaseModel):
+    elementos: list[AuditoriaSalida]
+    total: int
+    pagina: int
+    tamanio: int
+
+
+class ResumenAdministracion(BaseModel):
+    usuarios_activos: int
+    contratos: int
+    eventos_hoy: int
+    accesos_fallidos_hoy: int
