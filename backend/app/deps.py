@@ -5,37 +5,40 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 
+from app.constantes import ROL_ADMINISTRADOR
 from app.db import get_db
-from app.models import User, UserRole
-from app.security import decode_token
+from app.models import ESTADO_ACTIVO, Usuario
+from app.security import decodificar_token
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 
 DbSession = Annotated[Session, Depends(get_db)]
 
 
-def get_current_user(token: Annotated[str, Depends(oauth2_scheme)], db: DbSession) -> User:
-    credentials_error = HTTPException(
+def obtener_usuario_actual(
+    token: Annotated[str, Depends(oauth2_scheme)], db: DbSession
+) -> Usuario:
+    error = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Credenciales inválidas o sesión expirada",
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        payload = decode_token(token)
-        user_id = int(payload["sub"])
+        datos = decodificar_token(token)
+        id_usuario = int(datos["sub"])
     except (jwt.InvalidTokenError, KeyError, ValueError):
-        raise credentials_error
+        raise error
 
-    user = db.get(User, user_id)
-    if user is None or not user.is_active:
-        raise credentials_error
-    return user
-
-
-CurrentUser = Annotated[User, Depends(get_current_user)]
+    usuario = db.get(Usuario, id_usuario)
+    if usuario is None or usuario.estado != ESTADO_ACTIVO:
+        raise error
+    return usuario
 
 
-def require_admin(user: CurrentUser) -> User:
-    if user.role != UserRole.admin:
+UsuarioActual = Annotated[Usuario, Depends(obtener_usuario_actual)]
+
+
+def requiere_administrador(usuario: UsuarioActual) -> Usuario:
+    if usuario.codigo_rol != ROL_ADMINISTRADOR:
         raise HTTPException(status.HTTP_403_FORBIDDEN, "Requiere rol de administrador")
-    return user
+    return usuario

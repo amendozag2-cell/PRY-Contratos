@@ -11,7 +11,7 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Si el token expiró, cierra sesión
+// Si el token expiró, cierra la sesión
 api.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -28,7 +28,11 @@ export function getErrorMessage(err: unknown): string {
     if (!err.response) return "No se pudo conectar con el servidor";
     const detail = err.response.data?.detail;
     if (typeof detail === "string") return detail;
-    if (Array.isArray(detail)) return detail.map((d: { msg: string }) => d.msg).join(". ");
+    if (Array.isArray(detail)) {
+      return detail
+        .map((d: { msg: string }) => d.msg.replace(/^Value error, /, ""))
+        .join(". ");
+    }
   }
   return "Ocurrió un error inesperado";
 }

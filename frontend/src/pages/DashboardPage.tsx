@@ -1,34 +1,50 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 import { api, getErrorMessage } from "../api/client";
 import { useAuth } from "../context/AuthContext";
-import type { Contract } from "../types";
+import type { Contrato, EstadoAnalisis, Rol } from "../types";
 
-const roleLabel = { freelancer: "Freelancer", pyme: "PYME", admin: "Administrador" };
-const statusLabel = {
-  uploaded: "Cargado", processing: "Procesando", analyzed: "Analizado", failed: "Error",
+const etiquetaRol: Record<Rol, string> = {
+  FREELANCER: "Freelancer",
+  PYME: "PYME",
+  ADMINISTRADOR: "Administrador",
+};
+
+const etiquetaEstado: Record<EstadoAnalisis, string> = {
+  CARGADO: "Cargado",
+  PROCESANDO: "Procesando",
+  ANALIZADO: "Analizado",
+  ERROR: "Error",
 };
 
 export default function DashboardPage() {
-  const { user, logout } = useAuth();
-  const [contracts, setContracts] = useState<Contract[]>([]);
+  const { usuario, cerrarSesion } = useAuth();
+  const [contratos, setContratos] = useState<Contrato[]>([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    api.get<Contract[]>("/contracts")
-      .then(({ data }) => setContracts(data))
+    api.get<Contrato[]>("/contratos")
+      .then(({ data }) => setContratos(data))
       .catch((err) => setError(getErrorMessage(err)));
   }, []);
 
   return (
     <div className="min-h-screen bg-slate-100">
-      <header className="flex items-center justify-between bg-white px-6 py-4 shadow-sm">
+      <header className="flex flex-wrap items-center justify-between gap-3 bg-white px-6 py-4 shadow-sm">
         <h1 className="text-lg font-bold text-slate-800">Análisis de Riesgos Contractuales</h1>
-        <div className="flex items-center gap-4 text-sm">
-          <span className="text-slate-600">
-            {user?.full_name} · {user && roleLabel[user.role]}
-            {user?.company_name && ` · ${user.company_name}`}
-          </span>
-          <button onClick={logout} className="rounded-lg border border-slate-300 px-3 py-1 hover:bg-slate-50">
+        <div className="flex flex-wrap items-center gap-3 text-sm">
+          {usuario && (
+            <span className="text-slate-600">
+              {usuario.nombres} {usuario.apellidos} · {etiquetaRol[usuario.rol]}
+              {usuario.nombre_empresa && ` · ${usuario.nombre_empresa}`}
+            </span>
+          )}
+          {usuario?.rol === "ADMINISTRADOR" && (
+            <Link to="/admin/auditoria" className="rounded-lg bg-slate-800 px-3 py-1 text-white hover:bg-slate-700">
+              Auditoría
+            </Link>
+          )}
+          <button onClick={cerrarSesion} className="rounded-lg border border-slate-300 px-3 py-1 hover:bg-slate-50">
             Cerrar sesión
           </button>
         </div>
@@ -45,8 +61,8 @@ export default function DashboardPage() {
 
         {error && <p className="mb-4 rounded bg-red-50 p-2 text-sm text-red-700">{error}</p>}
 
-        <div className="overflow-hidden rounded-xl bg-white shadow">
-          {contracts.length === 0 ? (
+        <div className="overflow-x-auto rounded-xl bg-white shadow">
+          {contratos.length === 0 ? (
             <p className="p-8 text-center text-slate-500">Aún no has analizado contratos.</p>
           ) : (
             <table className="w-full text-left text-sm">
@@ -59,12 +75,12 @@ export default function DashboardPage() {
                 </tr>
               </thead>
               <tbody>
-                {contracts.map((c) => (
-                  <tr key={c.id} className="border-t">
-                    <td className="p-3">{c.original_filename}</td>
-                    <td className="p-3">{c.page_count ?? "—"}</td>
-                    <td className="p-3">{statusLabel[c.status]}</td>
-                    <td className="p-3">{new Date(c.created_at).toLocaleDateString("es-EC")}</td>
+                {contratos.map((c) => (
+                  <tr key={c.id_contrato} className="border-t">
+                    <td className="p-3">{c.nombre_archivo}</td>
+                    <td className="p-3">{c.numero_paginas ?? "—"}</td>
+                    <td className="p-3">{etiquetaEstado[c.estado_analisis] ?? c.estado_analisis}</td>
+                    <td className="p-3">{new Date(c.fecha_creacion).toLocaleDateString("es-EC")}</td>
                   </tr>
                 ))}
               </tbody>

@@ -1,61 +1,62 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { api } from "../api/client";
-import type { RegisterData, User } from "../types";
+import type { RegistroDatos, Usuario } from "../types";
 
 interface AuthContextValue {
-  user: User | null;
-  loading: boolean;
-  login: (email: string, password: string) => Promise<void>;
-  register: (data: RegisterData) => Promise<void>;
-  logout: () => void;
+  usuario: Usuario | null;
+  cargando: boolean;
+  iniciarSesion: (correo: string, clave: string) => Promise<void>;
+  registrarse: (datos: RegistroDatos) => Promise<void>;
+  cerrarSesion: () => void;
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [usuario, setUsuario] = useState<Usuario | null>(null);
+  const [cargando, setCargando] = useState(true);
 
-  async function loadUser() {
-    const { data } = await api.get<User>("/auth/me");
-    setUser(data);
+  async function cargarPerfil() {
+    const { data } = await api.get<Usuario>("/auth/perfil");
+    setUsuario(data);
   }
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
-      setLoading(false);
+      setCargando(false);
       return;
     }
-    loadUser()
+    cargarPerfil()
       .catch(() => localStorage.removeItem("token"))
-      .finally(() => setLoading(false));
+      .finally(() => setCargando(false));
   }, []);
 
-  async function login(email: string, password: string) {
-    // FastAPI espera el login como formulario (OAuth2)
-    const form = new URLSearchParams({ username: email, password });
+  async function iniciarSesion(correo: string, clave: string) {
+    // FastAPI espera el login como formulario OAuth2 (username / password)
+    const form = new URLSearchParams({ username: correo, password: clave });
     const { data } = await api.post<{ access_token: string }>("/auth/login", form);
     localStorage.setItem("token", data.access_token);
-    await loadUser();
+    await cargarPerfil();
   }
 
-  async function register(data: RegisterData) {
-    await api.post("/auth/register", data);
-    await login(data.email, data.password);
+  async function registrarse(datos: RegistroDatos) {
+    await api.post("/auth/registro", datos);
+    await iniciarSesion(datos.correo, datos.clave);
   }
 
-  function logout() {
+  function cerrarSesion() {
     localStorage.removeItem("token");
-    setUser(null);
+    setUsuario(null);
   }
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+    <AuthContext.Provider value={{ usuario, cargando, iniciarSesion, registrarse, cerrarSesion }}>
       {children}
     </AuthContext.Provider>
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useAuth() {
   const ctx = useContext(AuthContext);
   if (!ctx) throw new Error("useAuth debe usarse dentro de AuthProvider");
