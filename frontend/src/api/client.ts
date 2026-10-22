@@ -27,7 +27,7 @@ export function getErrorMessage(err: unknown): string {
   if (axios.isAxiosError(err)) {
     if (!err.response) return "No se pudo conectar con el servidor";
     const detail = err.response.data?.detail;
-    if (typeof detail === "string") return detail;
+    if (detail && typeof detail.mensaje === "string") return detail.mensaje;
     if (Array.isArray(detail)) {
       return detail
         .map((d: { msg: string }) => d.msg.replace(/^Value error, /, ""))

@@ -1,3 +1,9 @@
+"""Modelos ORM del Avance 1 (modelo entidad-relación v2.0).
+
+La estructura física la crea la migración 0001_avance1; estas clases la
+reflejan para que el código pueda consultarla.
+"""
+
 from datetime import datetime
 from decimal import Decimal
 
@@ -15,6 +21,7 @@ from sqlalchemy import (
     func,
     text,
 )
+from pgvector.sqlalchemy import Vector
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -22,6 +29,7 @@ from app.db import Base
 
 ESTADO_ACTIVO = "A"
 ESTADO_INACTIVO = "I"
+DIMENSION_EMBEDDING = 1536  # text-embedding-3-small
 
 
 class ColumnasControl:
@@ -154,3 +162,74 @@ class Auditoria(Base):
     fecha_evento: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), index=True
     )
+
+
+# ------------------------------------------------------- base de conocimiento
+class DocumentoRag(ColumnasControl, Base):
+    """Ley, reglamento o guía de buenas prácticas del corpus legal."""
+
+    __tablename__ = "rag_documento"
+
+    id_documento: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id_tipo_fuente: Mapped[int] = mapped_column(
+        ForeignKey("cat_catalogo_detalle.id_catalogo_detalle")
+    )
+    titulo: Mapped[str] = mapped_column(String(255))
+    referencia: Mapped[str | None] = mapped_column(String(255))
+    ruta_archivo: Mapped[str] = mapped_column(String(500))
+
+
+class FragmentoRag(ColumnasControl, Base):
+    """Fragmento vectorizado de un documento del corpus."""
+
+    __tablename__ = "rag_fragmento"
+    __table_args__ = (UniqueConstraint("id_documento", "numero_orden"),)
+
+    id_fragmento: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id_documento: Mapped[int] = mapped_column(
+        ForeignKey("rag_documento.id_documento", ondelete="CASCADE"), index=True
+    )
+    numero_orden: Mapped[int] = mapped_column(Integer)
+    articulo_referencia: Mapped[str | None] = mapped_column(String(60))
+    contenido: Mapped[str] = mapped_column(Text)
+    embedding: Mapped[list[float]] = mapped_column(Vector(DIMENSION_EMBEDDING))
+
+
+# ----------------------------------------------- semáforo y cláusulas
+class NivelRiesgo(ColumnasControl, Base):
+    """Catálogo del semáforo de riesgo (ALTO, MEDIO, BAJO)."""
+
+    __tablename__ = "cat_nivel_riesgo"
+
+    id_nivel_riesgo: Mapped[int] = mapped_column(SmallInteger, primary_key=True)
+    codigo: Mapped[str] = mapped_column(String(10), unique=True)
+    nombre: Mapped[str] = mapped_column(String(40))
+    color_hex: Mapped[str] = mapped_column(CHAR(7))
+    peso: Mapped[int] = mapped_column(SmallInteger)
+    orden: Mapped[int] = mapped_column(SmallInteger)
+    descripcion: Mapped[str | None] = mapped_column(String(255))
+
+
+class Clausula(ColumnasControl, Base):
+    """Cláusula del contrato con su ubicación en el PDF y, desde el Avance 4, su diagnóstico."""
+
+    __tablename__ = "con_clausula"
+    __table_args__ = (UniqueConstraint("id_contrato", "numero_orden"),)
+
+    id_clausula: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id_contrato: Mapped[int] = mapped_column(
+        ForeignKey("con_contrato.id_contrato", ondelete="CASCADE"), index=True
+    )
+    id_nivel_riesgo: Mapped[int | None] = mapped_column(
+        ForeignKey("cat_nivel_riesgo.id_nivel_riesgo")
+    )
+    id_categoria_riesgo: Mapped[int | None] = mapped_column(
+        ForeignKey("cat_catalogo_detalle.id_catalogo_detalle")
+    )
+    numero_orden: Mapped[int] = mapped_column(Integer)
+    titulo: Mapped[str | None] = mapped_column(String(255))
+    contenido: Mapped[str] = mapped_column(Text)
+    numero_pagina: Mapped[int] = mapped_column(SmallInteger)
+    coordenadas: Mapped[list[dict]] = mapped_column(JSONB)
+    embedding: Mapped[list[float] | None] = mapped_column(Vector(DIMENSION_EMBEDDING))
+    explicacion: Mapped[str | None] = mapped_column(Text)

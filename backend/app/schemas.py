@@ -63,10 +63,44 @@ class Token(BaseModel):
 class ContratoSalida(BaseModel):
     id_contrato: int
     nombre_archivo: str
+    tipo_contrato: str | None
     numero_paginas: int | None
+    numero_clausulas: int
+    es_escaneado: bool
     estado_analisis: str
     puntaje_riesgo_global: Decimal | None
     fecha_creacion: datetime
+
+
+class Coordenada(BaseModel):
+    """Rectángulo de un párrafo, normalizado entre 0 y 1 respecto a la página."""
+
+    pagina: int
+    x0: float
+    y0: float
+    x1: float
+    y1: float
+
+
+class ClausulaSalida(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id_clausula: int
+    numero_orden: int
+    titulo: str | None
+    contenido: str
+    numero_pagina: int
+    coordenadas: list[Coordenada]
+
+
+class ContratoDetalle(ContratoSalida):
+    clausulas: list[ClausulaSalida]
+
+
+class CargaContratoSalida(BaseModel):
+    contrato: ContratoSalida
+    paginas_ocr: list[int]
+    tiempo_ms: int
 
 
 # ----------------------------------------------------------- administración
