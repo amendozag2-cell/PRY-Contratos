@@ -16,12 +16,14 @@ from sqlalchemy import (
     text,
 )
 from sqlalchemy.dialects.postgresql import JSONB
+from pgvector.sqlalchemy import Vector
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db import Base
 
 ESTADO_ACTIVO = "A"
 ESTADO_INACTIVO = "I"
+DIMENSION_EMBEDDING = 1536  # text-embedding-3-small
 
 
 class ColumnasControl:
@@ -154,3 +156,34 @@ class Auditoria(Base):
     fecha_evento: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), index=True
     )
+
+
+# ------------------------------------------------------- base de conocimiento
+class DocumentoRag(ColumnasControl, Base):
+    """Ley, reglamento o guía de buenas prácticas del corpus legal."""
+
+    __tablename__ = "rag_documento"
+
+    id_documento: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id_tipo_fuente: Mapped[int] = mapped_column(
+        ForeignKey("cat_catalogo_detalle.id_catalogo_detalle")
+    )
+    titulo: Mapped[str] = mapped_column(String(255))
+    referencia: Mapped[str | None] = mapped_column(String(255))
+    ruta_archivo: Mapped[str] = mapped_column(String(500))
+
+
+class FragmentoRag(ColumnasControl, Base):
+    """Fragmento vectorizado de un documento del corpus."""
+
+    __tablename__ = "rag_fragmento"
+    __table_args__ = (UniqueConstraint("id_documento", "numero_orden"),)
+
+    id_fragmento: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id_documento: Mapped[int] = mapped_column(
+        ForeignKey("rag_documento.id_documento", ondelete="CASCADE"), index=True
+    )
+    numero_orden: Mapped[int] = mapped_column(Integer)
+    articulo_referencia: Mapped[str | None] = mapped_column(String(60))
+    contenido: Mapped[str] = mapped_column(Text)
+    embedding: Mapped[list[float]] = mapped_column(Vector(DIMENSION_EMBEDDING))

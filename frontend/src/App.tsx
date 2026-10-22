@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import DashboardPage from "./pages/DashboardPage";
 import AdminAuditPage from "./pages/AdminAuditPage";
+import AdminCorpusPage from "./pages/AdminCorpusPage";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           </Route>
           <Route element={<ProtectedRoute roles={["ADMINISTRADOR"]} />}>
             <Route path="/admin/auditoria" element={<AdminAuditPage />} />
+            <Route path="/admin/corpus" element={<AdminCorpusPage />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

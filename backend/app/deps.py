@@ -42,3 +42,6 @@ def requiere_administrador(usuario: UsuarioActual) -> Usuario:
     if usuario.codigo_rol != ROL_ADMINISTRADOR:
         raise HTTPException(status.HTTP_403_FORBIDDEN, "Requiere rol de administrador")
     return usuario
+
+
+Administrador = Annotated[Usuario, Depends(requiere_administrador)]

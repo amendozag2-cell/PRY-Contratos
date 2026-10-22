@@ -9,6 +9,10 @@ class Settings(BaseSettings):
     jwt_expire_minutes: int = 60
     cors_origins: list[str] = ["http://localhost:5173"]
     zona_horaria: str = "America/Guayaquil"
+    openai_api_key: str = ""
+    # Carpeta donde se guardan los archivos subidos (relativa a backend/)
+    directorio_archivos: str = "storage"
+    max_mb_corpus: int = 20
 
     model_config = SettingsConfigDict(env_file="../.env", extra="ignore")
 

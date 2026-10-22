@@ -40,9 +40,14 @@ export default function DashboardPage() {
             </span>
           )}
           {usuario?.rol === "ADMINISTRADOR" && (
-            <Link to="/admin/auditoria" className="rounded-lg bg-slate-800 px-3 py-1 text-white hover:bg-slate-700">
-              Auditoría
-            </Link>
+            <>
+              <Link to="/admin/corpus" className="rounded-lg bg-slate-800 px-3 py-1 text-white hover:bg-slate-700">
+                Corpus legal
+              </Link>
+              <Link to="/admin/auditoria" className="rounded-lg bg-slate-800 px-3 py-1 text-white hover:bg-slate-700">
+                Auditoría
+              </Link>
+            </>
           )}
           <button onClick={cerrarSesion} className="rounded-lg border border-slate-300 px-3 py-1 hover:bg-slate-50">
             Cerrar sesión
