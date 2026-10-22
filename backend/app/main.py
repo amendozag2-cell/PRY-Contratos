@@ -4,9 +4,9 @@ from sqlalchemy import text
 
 from app.config import settings
 from app.db import engine
-from app.routers import administracion, autenticacion, contratos
+from app.routers import administracion, autenticacion, contratos, corpus
 
-app = FastAPI(title="Detección de Riesgos Contractuales API", version="0.3.0")
+app = FastAPI(title="Detección de Riesgos Contractuales API", version="0.4.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -19,6 +19,7 @@ app.add_middleware(
 app.include_router(autenticacion.router)
 app.include_router(contratos.router)
 app.include_router(administracion.router)
+app.include_router(corpus.router)
 
 
 @app.get("/health", tags=["Sistema"])

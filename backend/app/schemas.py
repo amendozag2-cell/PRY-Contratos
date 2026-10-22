@@ -136,3 +136,52 @@ class ResumenAdministracion(BaseModel):
     contratos: int
     eventos_hoy: int
     accesos_fallidos_hoy: int
+
+
+# ------------------------------------------------- corpus legal (RAG)
+class DocumentoRagSalida(BaseModel):
+    id_documento: int
+    titulo: str
+    tipo_fuente: str
+    tipo_fuente_nombre: str
+    referencia: str | None
+    numero_fragmentos: int
+    estado: str
+    fecha_creacion: datetime
+
+
+class FragmentoSalida(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id_fragmento: int
+    numero_orden: int
+    articulo_referencia: str | None
+    contenido: str
+
+
+class FragmentoPagina(BaseModel):
+    elementos: list[FragmentoSalida]
+    total: int
+    pagina: int
+    tamanio: int
+
+
+class BusquedaEntrada(BaseModel):
+    consulta: str = Field(min_length=5, max_length=2000)
+    top_k: int | None = Field(default=None, ge=1, le=20)
+
+
+class FragmentoEncontrado(BaseModel):
+    id_fragmento: int
+    id_documento: int
+    titulo_documento: str
+    articulo_referencia: str | None
+    contenido: str
+    similitud: float
+
+
+class BusquedaSalida(BaseModel):
+    consulta: str
+    modelo: str
+    tiempo_ms: int
+    resultados: list[FragmentoEncontrado]
