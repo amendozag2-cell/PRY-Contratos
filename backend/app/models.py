@@ -1,3 +1,9 @@
+"""Modelos ORM del Avance 1 (modelo entidad-relación v2.0).
+
+La estructura física la crea la migración 0001_avance1; estas clases la
+reflejan para que el código pueda consultarla.
+"""
+
 from datetime import datetime
 from decimal import Decimal
 
@@ -15,6 +21,7 @@ from sqlalchemy import (
     func,
     text,
 )
+from pgvector.sqlalchemy import Vector
 from sqlalchemy.dialects.postgresql import JSONB
 from pgvector.sqlalchemy import Vector
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -187,3 +194,43 @@ class FragmentoRag(ColumnasControl, Base):
     articulo_referencia: Mapped[str | None] = mapped_column(String(60))
     contenido: Mapped[str] = mapped_column(Text)
     embedding: Mapped[list[float]] = mapped_column(Vector(DIMENSION_EMBEDDING))
+
+
+# ----------------------------------------------- semáforo y cláusulas
+class NivelRiesgo(ColumnasControl, Base):
+    """Catálogo del semáforo de riesgo (ALTO, MEDIO, BAJO)."""
+
+    __tablename__ = "cat_nivel_riesgo"
+
+    id_nivel_riesgo: Mapped[int] = mapped_column(SmallInteger, primary_key=True)
+    codigo: Mapped[str] = mapped_column(String(10), unique=True)
+    nombre: Mapped[str] = mapped_column(String(40))
+    color_hex: Mapped[str] = mapped_column(CHAR(7))
+    peso: Mapped[int] = mapped_column(SmallInteger)
+    orden: Mapped[int] = mapped_column(SmallInteger)
+    descripcion: Mapped[str | None] = mapped_column(String(255))
+
+
+class Clausula(ColumnasControl, Base):
+    """Cláusula del contrato con su ubicación en el PDF y, desde el Avance 4, su diagnóstico."""
+
+    __tablename__ = "con_clausula"
+    __table_args__ = (UniqueConstraint("id_contrato", "numero_orden"),)
+
+    id_clausula: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id_contrato: Mapped[int] = mapped_column(
+        ForeignKey("con_contrato.id_contrato", ondelete="CASCADE"), index=True
+    )
+    id_nivel_riesgo: Mapped[int | None] = mapped_column(
+        ForeignKey("cat_nivel_riesgo.id_nivel_riesgo")
+    )
+    id_categoria_riesgo: Mapped[int | None] = mapped_column(
+        ForeignKey("cat_catalogo_detalle.id_catalogo_detalle")
+    )
+    numero_orden: Mapped[int] = mapped_column(Integer)
+    titulo: Mapped[str | None] = mapped_column(String(255))
+    contenido: Mapped[str] = mapped_column(Text)
+    numero_pagina: Mapped[int] = mapped_column(SmallInteger)
+    coordenadas: Mapped[list[dict]] = mapped_column(JSONB)
+    embedding: Mapped[list[float] | None] = mapped_column(Vector(DIMENSION_EMBEDDING))
+    explicacion: Mapped[str | None] = mapped_column(Text)

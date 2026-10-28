@@ -1,0 +1,27 @@
+GUÍA DE BUENAS PRÁCTICAS PARA CONTRATOS DE SERVICIOS PROFESIONALES INDEPENDIENTES
+
+Documento de referencia elaborado por los autores del proyecto con fines de demostración del corpus RAG. Resume criterios de equidad contractual para freelancers y PYMEs. No constituye asesoría legal y debe complementarse con la legislación vigente.
+
+1. Plazos de pago
+Un contrato equilibrado fija una fecha o un plazo concreto para cada pago, contado desde la entrega o la aceptación del trabajo. Los plazos de pago superiores a noventa días, los pagos condicionados a que el cliente reciba a su vez el pago de un tercero y la ausencia total de un plazo trasladan el riesgo financiero al prestador del servicio y deben considerarse de riesgo. Es recomendable pactar un anticipo al inicio y pagos parciales por hitos en proyectos largos, así como un interés por mora en caso de retraso.
+
+2. Propiedad intelectual
+La cesión de los derechos patrimoniales sobre el trabajo debe limitarse a los entregables pagados y producirse cuando se haya cancelado el precio. Son señales de riesgo la cesión de todos los derechos sobre cualquier creación del prestador, incluidas las realizadas fuera del proyecto, la cesión de herramientas, plantillas o conocimientos previos del prestador, y la cesión sin contraprestación económica. El prestador debería conservar el derecho a mencionar el trabajo en su portafolio, salvo pacto expreso de confidencialidad.
+
+3. Penalidades y multas
+Las penalidades por retraso deben ser proporcionales al perjuicio real, tener un tope máximo razonable, por ejemplo un porcentaje del valor del contrato, y aplicarse solo cuando el retraso sea imputable al prestador. Son de riesgo las multas sin límite, las que superan el valor total del contrato y las que se aplican de forma automática sin posibilidad de justificación.
+
+4. Terminación del contrato
+Ambas partes deberían poder terminar el contrato con un preaviso razonable. Cuando el cliente termina anticipadamente, el prestador debe cobrar el trabajo realizado hasta la fecha de terminación. Es de riesgo la terminación unilateral sin preaviso y sin pago de lo ejecutado, especialmente si solo una de las partes tiene esa facultad.
+
+5. Exclusividad y no competencia
+Las cláusulas de exclusividad o de no competencia deben estar justificadas, limitarse a un ámbito concreto de clientes o actividades, tener una duración breve y, de preferencia, una compensación económica. Son desproporcionadas las que impiden trabajar con cualquier otro cliente, las que duran años después de terminado el contrato y las que abarcan todo el sector o todo el país.
+
+6. Confidencialidad
+La obligación de confidencialidad debe definir qué información es confidencial, excluir la información pública o conocida previamente por el prestador y tener una duración determinada. Es de riesgo una confidencialidad indefinida que abarque cualquier información sin distinción, acompañada de penalidades elevadas.
+
+7. Responsabilidad e indemnizaciones
+La responsabilidad del prestador debe limitarse a los daños directos causados por su culpa y tener un tope, normalmente equivalente al valor del contrato. Son de riesgo las cláusulas que obligan al prestador a indemnizar cualquier daño, incluidos los indirectos o el lucro cesante, sin límite de monto.
+
+8. Alcance, cambios y aceptación
+El contrato debe describir con precisión los entregables, el número de revisiones incluidas y el procedimiento de aceptación, con un plazo para que el cliente apruebe o formule observaciones. Los cambios fuera del alcance original deben cotizarse por separado. Es de riesgo un alcance abierto que permita al cliente solicitar trabajo adicional sin costo o retrasar indefinidamente la aceptación para evitar el pago.
