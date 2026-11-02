@@ -1,24 +1,59 @@
+from pathlib import Path
 from typing import Annotated
-
+from typing import Annotated
 from fastapi import APIRouter, File, Form, HTTPException, Query, Request, Response, UploadFile, status
+from fastapi.responses import FileResponse
 from sqlalchemy import func, select
 from sqlalchemy.orm import aliased
 
 from app.config import settings
-from app.constantes import ACC_CARGA_CONTRATO, ACC_INACTIVACION_CONTRATO, CAT_TIPO_CONTRATO, FALLO
+from app.constantes import (
+    ACC_ACTUALIZACION_CONTEXTO,
+    ACC_CARGA_CONTRATO,
+    ACC_INACTIVACION_CONTRATO,
+    CAT_ROL_PARTE,
+    CAT_TIPO_CONTRATO,
+    FALLO,
+)
 from app.deps import DbSession, UsuarioActual
-from app.models import ESTADO_ACTIVO, CatalogoDetalle, Clausula, Contrato, Usuario
+from app.models import (
+    ESTADO_ACTIVO,
+    CatalogoDetalle,
+    Clausula,
+    ClausulaFundamento,
+    Condicion,
+    Contrato,
+    DocumentoRag,
+    FragmentoRag,
+    NivelRiesgo,
+    Usuario,
+)
 from app.schemas import (
+    MAX_CONTEXTO,
     CargaContratoSalida,
     ClausulaSalida,
+    CoberturaSalida,
+    CondicionSalida,
+    ContextoEntrada,
     ContratoDetalle,
     ContratoSalida,
+    FundamentoSalida,
+    NivelRiesgoSalida,
     OpcionCatalogo,
 )
+from app.services.analisis import ErrorAnalisis, analizar_contrato
 from app.services.auditoria import registrar_evento
 from app.services.catalogos import listar_detalles, obtener_id_detalle
-from app.services.contratos import ContratoDuplicado, cargar_contrato, inactivar_contrato
+from app.services.contratos import (
+    ContratoDuplicado,
+    actualizar_contexto,
+    cargar_contrato,
+    inactivar_contrato,
+)
+from app.services.corpus import ErrorCorpus
+from app.services.embeddings import ErrorEmbeddings
 from app.services.extraccion import ErrorExtraccion
+from app.services.llm import ErrorLLM
 from app.services.procesamiento_pdf import renderizar_pagina
 
 router = APIRouter(prefix="/contratos", tags=["Contratos"])
@@ -80,6 +115,21 @@ def tipos_de_contrato(db: DbSession, _: UsuarioActual):
     return [OpcionCatalogo(codigo=d.codigo, nombre=d.nombre) for d in listar_detalles(db, CAT_TIPO_CONTRATO)]
 
 
+@router.get("/roles-parte", response_model=list[OpcionCatalogo])
+def roles_en_el_contrato(db: DbSession, _: UsuarioActual):
+    """Papeles que el usuario puede tener en el contrato (presta o contrata el servicio)."""
+    return [OpcionCatalogo(codigo=d.codigo, nombre=d.nombre) for d in listar_detalles(db, CAT_ROL_PARTE)]
+
+
+def _id_rol_parte(db, codigo: str | None) -> int | None:
+    if not codigo:
+        return None
+    try:
+        return obtener_id_detalle(db, CAT_ROL_PARTE, codigo)
+    except ValueError:
+        raise HTTPException(status.HTTP_400_BAD_REQUEST, "El papel en el contrato no es válido")
+
+
 @router.get("", response_model=list[ContratoSalida])
 def listar_mis_contratos(usuario: UsuarioActual, db: DbSession):
     filas = db.execute(
@@ -97,6 +147,8 @@ def cargar(
     usuario: UsuarioActual,
     archivo: Annotated[UploadFile, File(description="Contrato en PDF (digital o escaneado)")],
     tipo_contrato: Annotated[str | None, Form(description="Código del catálogo TIPO_CONTRATO")] = None,
+    rol_parte: Annotated[str | None, Form(description="Código del catálogo ROL_PARTE")] = None,
+    contexto: Annotated[str | None, Form(description="Lo que el usuario dice que acordaron")] = None,
 ):
     nombre_archivo = archivo.filename or "contrato.pdf"
     limite = settings.max_mb_contrato * 1024 * 1024
@@ -108,6 +160,14 @@ def cargar(
         )
     if not contenido.startswith(FIRMA_PDF):
         raise HTTPException(status.HTTP_400_BAD_REQUEST, "El archivo debe ser un PDF")
+
+    contexto = (contexto or "").strip() or None
+    if contexto and len(contexto) > MAX_CONTEXTO:
+        raise HTTPException(
+            status.HTTP_422_UNPROCESSABLE_CONTENT,
+            f"La descripción de lo acordado admite hasta {MAX_CONTEXTO} caracteres",
+        )
+    id_rol = _id_rol_parte(db, rol_parte)
 
     id_tipo = None
     if tipo_contrato:
@@ -122,6 +182,8 @@ def cargar(
             contenido=contenido,
             nombre_archivo=nombre_archivo,
             id_tipo_contrato=id_tipo,
+            id_rol_parte=id_rol,
+            contexto_usuario=contexto,
         )
     except ContratoDuplicado as error:
         raise HTTPException(
@@ -146,18 +208,117 @@ def cargar(
     )
 
 
-@router.get("/{id_contrato}", response_model=ContratoDetalle)
-def detalle(id_contrato: int, db: DbSession, usuario: UsuarioActual):
-    fila = _obtener_propio(db, id_contrato, usuario)
-    clausulas = db.scalars(
-        select(Clausula)
-        .where(Clausula.id_contrato == id_contrato, Clausula.estado == ESTADO_ACTIVO)
+def _detalle(db, fila) -> ContratoDetalle:
+    """Contrato con sus cláusulas, el diagnóstico de cada una y las normas citadas."""
+    contrato = fila[0]
+    categoria = aliased(CatalogoDetalle)
+    filas = db.execute(
+        select(Clausula, NivelRiesgo, categoria)
+        .outerjoin(NivelRiesgo, NivelRiesgo.id_nivel_riesgo == Clausula.id_nivel_riesgo)
+        .outerjoin(categoria, categoria.id_catalogo_detalle == Clausula.id_categoria_riesgo)
+        .where(Clausula.id_contrato == contrato.id_contrato, Clausula.estado == ESTADO_ACTIVO)
         .order_by(Clausula.numero_orden)
+    ).all()
+
+    fundamentos: dict[int, list[FundamentoSalida]] = {}
+    ids = [c.id_clausula for c, _, _ in filas]
+    if ids:
+        for cf, fragmento, titulo in db.execute(
+            select(ClausulaFundamento, FragmentoRag, DocumentoRag.titulo)
+            .join(FragmentoRag, FragmentoRag.id_fragmento == ClausulaFundamento.id_fragmento)
+            .join(DocumentoRag, DocumentoRag.id_documento == FragmentoRag.id_documento)
+            .where(ClausulaFundamento.id_clausula.in_(ids), ClausulaFundamento.estado == ESTADO_ACTIVO)
+            .order_by(ClausulaFundamento.similitud.desc())
+        ).all():
+            fundamentos.setdefault(cf.id_clausula, []).append(FundamentoSalida(
+                id_fragmento=fragmento.id_fragmento,
+                titulo_documento=titulo,
+                articulo_referencia=fragmento.articulo_referencia,
+                contenido=fragmento.contenido,
+                similitud=float(cf.similitud),
+            ))
+
+    clausulas = []
+    for c, nivel, cat in filas:
+        salida = ClausulaSalida.model_validate(c)
+        salida.nivel_riesgo = NivelRiesgoSalida.model_validate(nivel) if nivel else None
+        salida.categoria_riesgo = OpcionCatalogo(codigo=cat.codigo, nombre=cat.nombre) if cat else None
+        salida.explicacion = c.explicacion
+        salida.fundamentos = fundamentos.get(c.id_clausula, [])
+        clausulas.append(salida)
+
+    cobertura = aliased(CatalogoDetalle)
+    condiciones = [
+        CondicionSalida(
+            numero_orden=cond.numero_orden,
+            descripcion=cond.descripcion,
+            cobertura=CoberturaSalida(codigo=cob.codigo, nombre=cob.nombre, color_hex=cob.valor or "#64748B"),
+            explicacion=cond.explicacion,
+            id_clausula=cond.id_clausula,
+            numero_clausula=numero,
+            titulo_clausula=titulo,
+        )
+        for cond, cob, numero, titulo in db.execute(
+            select(Condicion, cobertura, Clausula.numero_orden, Clausula.titulo)
+            .join(cobertura, cobertura.id_catalogo_detalle == Condicion.id_cobertura)
+            .outerjoin(Clausula, Clausula.id_clausula == Condicion.id_clausula)
+            .where(Condicion.id_contrato == contrato.id_contrato, Condicion.estado == ESTADO_ACTIVO)
+            .order_by(Condicion.numero_orden)
+        ).all()
+    ]
+
+    rol = db.get(CatalogoDetalle, contrato.id_rol_parte) if contrato.id_rol_parte else None
+    niveles = db.scalars(
+        select(NivelRiesgo).where(NivelRiesgo.estado == ESTADO_ACTIVO).order_by(NivelRiesgo.orden)
     ).all()
     return ContratoDetalle(
         **_salida(fila).model_dump(),
-        clausulas=[ClausulaSalida.model_validate(c) for c in clausulas],
+        resumen=contrato.resumen,
+        tiempo_procesamiento_ms=contrato.tiempo_procesamiento_ms,
+        fecha_analisis=contrato.fecha_analisis,
+        rol_parte=OpcionCatalogo(codigo=rol.codigo, nombre=rol.nombre) if rol else None,
+        contexto_usuario=contrato.contexto_usuario,
+        niveles=[NivelRiesgoSalida.model_validate(n) for n in niveles],
+        clausulas=clausulas,
+        condiciones=condiciones,
     )
+
+
+@router.get("/{id_contrato}", response_model=ContratoDetalle)
+def detalle(id_contrato: int, db: DbSession, usuario: UsuarioActual):
+    return _detalle(db, _obtener_propio(db, id_contrato, usuario))
+
+
+@router.patch("/{id_contrato}/contexto", response_model=ContratoDetalle)
+def cambiar_contexto(id_contrato: int, datos: ContextoEntrada, request: Request,
+                     db: DbSession, usuario: UsuarioActual):
+    """Cambia el papel del usuario y lo acordado. Se aplica en el siguiente análisis."""
+    contrato = _obtener_propio(db, id_contrato, usuario)[0]
+    anterior = {"rol_parte": contrato.id_rol_parte, "caracteres_contexto": len(contrato.contexto_usuario or "")}
+    actualizar_contexto(contrato, usuario, _id_rol_parte(db, datos.rol_parte), datos.contexto_usuario)
+    registrar_evento(
+        db, request, ACC_ACTUALIZACION_CONTEXTO,
+        usuario=usuario,
+        tabla_afectada="con_contrato",
+        id_registro=contrato.id_contrato,
+        datos_anteriores=anterior,
+        datos_nuevos={"rol_parte": contrato.id_rol_parte, "caracteres_contexto": len(datos.contexto_usuario or "")},
+    )
+    db.commit()
+    return _detalle(db, _obtener_propio(db, id_contrato, usuario))
+
+
+@router.post("/{id_contrato}/analizar", response_model=ContratoDetalle)
+def analizar(id_contrato: int, request: Request, db: DbSession, usuario: UsuarioActual):
+    """Clasifica cada cláusula en el semáforo de riesgo usando el corpus legal (RAG) y el LLM."""
+    contrato = _obtener_propio(db, id_contrato, usuario)[0]
+    try:
+        analizar_contrato(db, request, usuario, contrato)
+    except ErrorAnalisis as error:
+        raise HTTPException(status.HTTP_422_UNPROCESSABLE_CONTENT, str(error))
+    except (ErrorLLM, ErrorEmbeddings, ErrorCorpus) as error:
+        raise HTTPException(status.HTTP_502_BAD_GATEWAY, str(error))
+    return _detalle(db, _obtener_propio(db, id_contrato, usuario))
 
 
 @router.get("/{id_contrato}/paginas/{numero_pagina}/imagen")
@@ -177,6 +338,14 @@ def imagen_de_pagina(
         raise HTTPException(status.HTTP_404_NOT_FOUND, "No se encontró el archivo del contrato")
     return Response(content=png, media_type="image/png", headers={"Cache-Control": "private, max-age=3600"})
 
+@router.get("/{id_contrato}/archivo")
+def descargar_archivo(id_contrato: int, db: DbSession, usuario: UsuarioActual):
+    """PDF original del contrato, para descargarlo desde el visor."""
+    contrato = _obtener_propio(db, id_contrato, usuario)[0]
+    ruta = Path(contrato.ruta_archivo)
+    if not ruta.is_file():
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "No se encontró el archivo del contrato")
+    return FileResponse(ruta, media_type="application/pdf", filename=contrato.nombre_archivo)
 
 @router.patch("/{id_contrato}/inactivar", status_code=status.HTTP_204_NO_CONTENT)
 def inactivar(id_contrato: int, request: Request, db: DbSession, usuario: UsuarioActual):

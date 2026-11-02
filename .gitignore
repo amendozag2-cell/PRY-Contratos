@@ -2,3 +2,4 @@
 .venv/
 .vscode/
 backend/storage/
+corpus/fuentes/

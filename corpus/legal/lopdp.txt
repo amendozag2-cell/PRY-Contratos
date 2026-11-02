@@ -1,0 +1,593 @@
+Art. 4.-Términos y definiciones.-Para los efectos de la aplicación de la presente Ley se establecen
+las siguientes definiciones:
+Autoridad de Protección de Datos Personales: Autoridad pública independiente encargada de
+supervisar la aplicación de la presente ley, reglamento y resoluciones que ella dicte, con el fin de
+proteger los derechos y libertades fundamentales de las personas naturales, en cuanto al tratamiento
+de sus datos personales.
+Anonimización: La aplicación de medidas dirigidas a impedir la identificación o reidentificación de una
+persona natural, sin esfuerzos desproporcionados.
+Base de datos o fichero: Conjunto estructurado de datos cualquiera que fuera la forma, modalidad de
+creación, almacenamiento, organización, tipo de soporte, tratamiento, procesamiento, localización o
+acceso, centralizado, descentralizado o repartido de forma funcional o geográfica.
+Consentimiento: Manifestación de la voluntad libre, específica, informada e inequívoca, por el que el
+titular de los datos personales autoriza al responsable del tratamiento de los datos personales a
+tratar los mismos.
+Dato biométrico: Dato personal único, relativo a las características físicas o fisiológicas, o conductas
+de una persona natural que permita o confirme la identificación única de dicha persona, como
+imágenes faciales o datos dactiloscópicos, entre otros.
+Dato genético: Dato personal único relacionado a características genéticas heredadas o adquiridas
+de una persona natural que proporcionan información única sobre la fisiología o salud de un
+individuo.
+Dato personal: Dato que identifica o hace identificable a una persona natural, directa o
+indirectamente.
+Datos personales crediticios: Datos que integran el comportamiento económico de personas
+naturales, para analizar su capacidad financiera.
+Datos relativos a: etnia, identidad de género, identidad cultural, religión, ideología, filiación política,
+pasado judicial, condición migratoria, orientación sexual, salud, datos biométricos, datos genéticos,
+datos relativos a las personas apátridas y refugiados que requieren protección internacional, y
+aquellos cuyo tratamiento indebido pueda dar origen a discriminación, atenten o puedan atentar
+contra los derechos y libertades fundamentales.
+Datos relativos a la salud: datos personales relativos a la salud física o mental de una persona,
+incluida la prestación de servicios de atención sanitaria, que revelen información sobre su estado de
+salud.
+Datos sensibles: Datos relativos a: etnia, identidad de género, identidad cultural, religión, ideología,
+filiación política, pasado judicial, condición migratoria, orientación sexual, salud, datos biométricos,
+datos genéticos y aquellos cuyo tratamiento indebido pueda dar origen a discriminación, atenten o
+puedan atentar contra los derechos y libertades fundamentales.
+Delegado de protección de datos: Persona natural encargada de informar al responsable o al
+encargado del tratamiento sobre sus obligaciones legales en materia de protección de datos, así
+como de velar o supervisar el cumplimiento normativo al respecto, y de cooperar con la Autoridad de
+Protección de Datos Personales, sirviendo como punto de contacto entre esta y la entidad
+responsable del tratamiento de datos.
+Destinatario: Persona natural o jurídica que ha sido comunicada con datos personales.
+Elaboración de perfiles: Todo tratamiento de datos personales que permite evaluar, analizar o
+predecir aspectos de una persona natural para determinar comportamientos o estándares relativos a:
+rendimiento profesional, situación económica, salud, preferencias personales, intereses, Habilidad,
+ubicación, movimiento físico de una persona, entre otros.
+Encargado del tratamiento de datos personales: Persona natural o jurídica, pública o privada,
+autoridad pública, u otro organismo que solo o conjuntamente con otros trate datos personales a
+nombre y por cuenta de un responsable de tratamiento de datos personales.
+Entidad Certificadora: Entidad reconocida por la Autoridad de Protección de Datos Personales, que
+podrá, de manera no exclusiva, proporcionar certificaciones en materia de protección de datos
+personales.
+Fuente accesible al público: Bases de datos que pueden ser consultadas por cualquier persona, cuyo
+acceso es público, incondicional y generalizado.
+Responsable de tratamiento de datos personales: persona natural o jurídica, pública o privada,
+autoridad pública, u otro organismo, que solo o conjuntamente con otros decide sobre la finalidad y el
+tratamiento de datos personales.
+Sellos de protección de datos personales: Acreditación que otorga la entidad certificadora al
+responsable o al encargado del tratamiento de datos personales, de haber implementado mejores
+prácticas en sus procesos, con el objetivo de promover la confianza del titular, de conformidad con la
+normativa técnica emitida por la Autoridad de Protección de Datos Personales.
+Seudonimización: Tratamiento de datos personales de manera tal que ya no puedan atribuirse a un
+titular sin utilizar información adicional, siempre que dicha información adicional, figure por separado
+y esté sujeta a medidas técnicas y organizativas destinadas a garantizar que los datos personales no
+se atribuyan a una persona física identificada o identificable.
+Titular: Persona natural cuyos datos son objeto de tratamiento.
+Transferencia o comunicación: Manifestación, declaración, entrega, consulta, interconexión, cesión,
+transmisión, difusión, divulgación o cualquier forma de revelación de datos personales realizada a
+una persona distinta al titular, responsable o encargado del tratamiento de datos personales. Los
+datos personales que comuniquen deben ser exactos, completos y actualizados.
+Tratamiento: Cualquier operación o conjunto de operaciones realizadas sobre datos personales, ya
+sea por procedimientos técnicos de carácter automatizado, parcialmente automatizado o no
+automatizado, tales como: la recogida, recopilación, obtención, registro, organización, estructuración,
+conservación, custodia, adaptación, modificación, eliminación, indexación, extracción, consulta,
+elaboración, utilización, posesión, aprovechamiento, distribución, cesión, comunicación o
+transferencia, o cualquier otra forma de habilitación de acceso, cotejo, interconexión, limitación,
+supresión, destrucción y, en general, cualquier uso de datos personales.
+Vulneración de la seguridad de los datos personales: Incidente de seguridad que afecta la
+confidencialidad, disponibilidad o integridad de los datos personales.
+
+Art. 7.-Tratamiento legítimo de datos personas.-El tratamiento será legítimo y lícito si se cumple con
+alguna de las siguientes condiciones:
+1) Por consentimiento del titular para el tratamiento de sus datos personales, para una o varias
+finalidades especificas;
+2) Que sea realizado por el responsable del tratamiento en cumplimiento de una obligación legal;
+3) Que sea realizado por el responsable del tratamiento, por orden judicial, debiendo observarse los
+principios de la presente ley;
+4) Que el tratamiento de datos personales se sustente en el cumplimiento de una misión realizada en
+interés público o en el ejercicio de poderes públicos conferidos al responsable, derivados de una
+competencia atribuida por una norma con rango de ley, sujeto al cumplimiento de los estándares
+internacionales de derechos humanos aplicables a la materia, al cumplimiento de los principios de
+esta ley y a los criterios de legalidad, proporcionalidad y necesidad;
+5) Para la ejecución de medidas precontractuales a petición del titular o para el cumplimiento de
+obligaciones contractuales perseguidas por el responsable del tratamiento de datos personales,
+encargado del tratamiento de datos personales o por un tercero legalmente habilitado;
+6) Para proteger intereses vitales del interesado o de otra persona natural, como su vida, salud o
+integridad;
+7) Para tratamiento de datos personales que consten en bases de datos de acceso público; u,
+8) Para satisfacer un interés legítimo del responsable de tratamiento o de tercero, siempre que no
+prevalezca el interés o derechos fundamentales de los titulares al amparo de lo dispuesto en esta
+norma.
+
+Art. 8.-Consentimiento.-Se podrán tratar y comunicar datos personales cuando se cuente con la
+manifestación de la voluntad del titular para hacerlo. El consentimiento será válido, cuando la
+manifestación de la voluntad sea:
+1) Libre, es decir, cuando se encuentre exenta de vicios del consentimiento;
+2) Específica, en cuanto a la determinación concreta de los medios y fines del tratamiento;
+3) Informada, de modo que cumpla con el principio de transparencia y efectivice el derecho a la
+transparencia,
+4) Inequívoca, de manera que no presente dudas sobre el alcance de la autorización otorgada por el
+titular.
+El consentimiento podrá revocarse en cualquier momento sin que sea necesaria una justificación,
+para lo cual el responsable del tratamiento de datos personales establecerá mecanismos que
+garanticen celeridad, eficiencia, eficacia y gratuidad, así como un procedimiento sencillo, similar al
+proceder con el cual recabó el consentimiento.
+El tratamiento realizado antes de revocar el consentimiento es lícito, en virtud de que este no tiene
+efectos retroactivos.
+Cuando se pretenda fundar el tratamiento de los datos en el consentimiento del afectado para una
+pluralidad de finalidades será preciso que conste que dicho consentimiento se otorga para todas
+ellas.
+
+Art. 10.-Principios.-Sin perjuicio de otros principios establecidos en la Constitución de la República,
+los instrumentos internacionales ratificados por el Estado u otras normas jurídicas, la presente Ley se
+regirá por los principios de:
+a) Juridicidad.-Los datos personales deben tratarse con estricto apego y cumplimiento a los
+principios, derechos y obligaciones establecidas en la Constitución, los instrumentos internacionales,
+la presente Ley, su Reglamento y la demás normativa y jurisprudencia aplicable.
+b) Lealtad.-El tratamiento de datos personales deberá ser leal, por lo que para los titulares debe
+quedar claro que se están recogiendo, utilizando, consultando o tratando de otra manera, datos
+personales que les conciernen, así como las formas en que dichos datos son o serán tratados.
+En ningún caso los datos personales podrán ser tratados a través de medios o para fines, ilícitos o
+desleales.
+c) Transparencia.-El tratamiento de datos personales deberá ser transparente, por lo que toda
+información o comunicación relativa a este tratamiento deberá ser fácilmente accesible y fácil de
+entender y se deberá utilizar un lenguaje sencillo y claro.
+Las relaciones derivadas del tratamiento de datos personales deben ser transparentes y se rigen en
+función de las disposiciones contenidas en la presente Ley, su reglamento y demás normativa
+atinente a la materia.
+d) Finalidad.-Las finalidades del tratamiento deberán ser determinadas, explícitas, legítimas y
+comunicadas al titular: no podrán tratarse datos personales con fines distintos para los cuales fueron
+recopilados, a menos que concurra una de las causales que habiliten un nuevo tratamiento conforme
+los supuestos de tratamiento legítimo señalados en esta ley.
+El tratamiento de datos personales con fines distintos de aquellos para los que hayan sido recogidos
+inicialmente solo debe permitirse cuando sea compatible con los fines de su recogida inicial. Para
+ello, habrá de considerarse el contexto en el que se recogieron los datos, la información facilitada al
+titular en ese proceso y, en particular, las expectativas razonables del titular basadas en su relación
+con el responsable en cuanto a su uso posterior, la naturaleza de los datos personales, las
+consecuencias para los titulares del tratamiento ulterior previsto y la existencia de garantías
+adecuadas tanto en la operación de tratamiento original como en la operación de tratamiento ulterior
+prevista.
+e) Pertinencia y minimización de datos personales.-Los datos personales deben ser pertinentes y
+estar limitados a lo estrictamente necesario para el cumplimiento de la finalidad del tratamiento.
+f) Proporcionalidad del tratamiento.-El tratamiento debe ser adecuado, necesario, oportuno, relevante
+y no excesivo con relación a las finalidades para las cuales hayan sido recogidos o a la naturaleza
+misma, de las categorías especiales de datos.
+g) Confidencialidad.-El tratamiento de datos personales debe concebirse sobre la base del debido
+sigilo y secreto, es decir, no debe tratarse o comunicarse para un fin distinto para el cual fueron
+recogidos, a menos que concurra una de las causales que habiliten un nuevo tratamiento conforme
+los supuestos de tratamiento legítimo señalados en esta ley.
+Para tal efecto, el responsable del tratamiento deberá adecuar las medidas técnicas organizativas
+para cumplir con este principio.
+h) Calidad y exactitud.-Los datos personales que sean objeto de tratamiento deben ser exactos,
+íntegros, precisos, completos, comprobables, claros; y, de ser el caso, debidamente actualizados; de
+tal forma que no se altere su veracidad. Se adoptarán todas las medidas razonables para que se
+supriman o rectifiquen sin dilación los datos personales que sean inexactos con respecto a los fines
+para los que se tratan.
+En caso de tratamiento por parte de un encargado, la calidad y exactitud será obligación del
+responsable del tratamiento de datos personales.
+Siempre que el responsable del tratamiento haya adoptado todas las medidas razonables para que
+se supriman o rectifiquen sin dilación, no le será imputable la inexactitud de los datos personales,
+con respecto a los fines para los que se tratan, cuando los datos inexactos:
+a) Hubiesen sido obtenidos por el responsable directamente del titular.
+b) Hubiesen sido obtenidos por el responsable de un intermediario en caso de que las normas
+aplicables al sector de actividad al que pertenezca el responsable del tratamiento establecieran la
+posibilidad de intervención de un intermediario que recoja en nombre propio los datos de los
+afectados para su transmisión al responsable.
+c) Fuesen obtenidos de un registro público por el responsable.
+i) Conservación.-Los datos personales serán conservados durante un tiempo no mayor al necesario
+para cumplir con la finalidad de su tratamiento.
+Para garantizar que los datos personales no se conserven más tiempo del necesario, el responsable
+del tratamiento establecerá plazos para su supresión o revisión periódica.
+La conservación ampliada de tratamiento de datos personales únicamente se realizará con fines de
+archivo en interés público, fines de investigación científica, histórica o estadística, siempre y cuando
+se establezcan las garantías de seguridad y protección de datos personales, oportunas y necesarias,
+para salvaguardar los derechos previstos en esta norma.
+j) Seguridad de datos personales.-Los responsables y encargados de tratamiento de los datos
+personales deberán implementar todas las medidas de seguridad adecuadas y necesarias,
+entendiéndose por tales las aceptadas por el estado de la técnica, sean estas organizativas, técnicas
+o de cualquier otra índole, para proteger los datos personales frente a cualquier riesgo, amenaza,
+vulnerabilidad, atendiendo a la naturaleza de los datos de carácter personal, al ámbito y el contexto.
+k) Responsabilidad proactiva y demostrada.-El responsable del tratamiento de datos personales
+deberá acreditar el haber implementado mecanismos para la protección de datos personales; es
+decir, el cumplimiento de los principios, derechos y obligaciones establecidos en la presente Ley,
+para lo cual, además de lo establecido en la normativa aplicable, podrá valerse de estándares,
+mejores prácticas, esquemas de auto y corregulación, códigos de protección, sistemas de
+certificación, sellos de protección de datos personales o cualquier otro mecanismo que se determine
+adecuado a los fines, la naturaleza del dato personal o el riesgo del tratamiento.
+El responsable del tratamiento de datos personales está obligado a rendir cuentas sobre el
+tratamiento al titular y a la Autoridad de Protección de Datos Personales.
+El responsable del tratamiento de datos personales deberá evaluar y revisar los mecanismos que
+adopte para cumplir con el principio de responsabilidad de forma continua y permanente, con el
+objeto de mejorar su nivel de eficacia en cuanto a la aplicación de la presente Ley.
+l) Aplicación favorable al titular.-En caso de duda sobre el alcance de las disposiciones del
+ordenamiento jurídico o contractuales, aplicables a la protección de datos personales, los
+funcionarios judiciales y administrativos las interpretarán y aplicarán en el sentido más favorable al
+titular de dichos datos.
+m) Independencia del control.-Para el efectivo ejercicio del derecho a la protección de datos
+personales, y en cumplimiento de las obligaciones de protección de los derechos que tiene el
+Estado, la Autoridad de Protección de Datos deberá ejercer un control independiente, imparcial y
+autónomo, así como llevar a cabo las respectivas acciones de prevención, investigación y sanción.
+
+Art. 25.-Categorías especiales de datos personales.-Se considerarán categorías especiales de datos
+personales, los siguientes:
+a) Datos sensibles;
+b) Datos de niñas, niños y adolescentes;
+c) Datos de salud; y,
+d) Datos de personas con discapacidad y de sus sustitutos, relativos a la discapacidad.
+
+Art. 26.-Tratamiento de datos sensibles.-Queda prohibido el tratamiento de datos personales
+sensibles salvo que concurra alguna de las siguientes circunstancias:
+a) El titular haya dado su consentimiento explícito para el tratamiento de sus datos personales,
+especificándose claramente sus fines.
+b) El tratamiento es necesario para el cumplimiento de obligaciones y el ejercicio de derechos
+específicos del responsable del tratamiento o del titular en el ámbito del Derecho laboral y de la
+seguridad y protección social.
+c) El tratamiento es necesario para proteger intereses vitales del titular o de otra persona natural, en
+el supuesto de que el titular no esté capacitado, física o jurídicamente, para dar su consentimiento.
+d) El tratamiento se refiere a datos personales que el titular ha hecho manifiestamente públicos.
+e) El tratamiento se lo realiza por orden de autoridad judicial.
+f) El tratamiento es necesario con fines de archivo en interés público, fines de investigación científica
+o histórica o fines estadísticos, que debe ser proporcional al objetivo perseguido, respetar en lo
+esencial el derecho a la protección de datos y establecer medidas adecuadas y específicas para
+proteger los intereses y derechos fundamentales del titular.
+g) Cuando el tratamiento de los datos de salud se sujete a las disposiciones contenidas en la
+presente ley.
+
+Art. 33.-Transferencia o comunicación de datos personales.-Los datos personales podrán
+transferirse o comunicarse a terceros cuando se realice para el cumplimiento de fines directamente
+relacionados con las funciones legítimas del responsable y del destinatario, cuando la transferencia
+se encuentre configurada dentro de una de las causales de legitimidad establecidas en esta Ley, y
+se cuente, además, con el consentimiento del titular.
+Se entenderá que el consentimiento es informado cuando para la transferencia o comunicación de
+datos personales el Responsable del tratamiento haya entregado información suficiente al titular que
+le permita conocer la finalidad a que se destinarán sus datos y el tipo de actividad del tercero a quien
+se pretende transferir o comunicar dichos datos.
+
+Art. 34.-Acceso a datos personales por parte del encargado.-No se considerará transferencia o
+comunicación en el caso de que el encargado acceda a datos personales para la prestación de un
+servicio al responsable del tratamiento de datos personales. El tercero que ha accedido
+legítimamente a datos personales en estas consideraciones, será considerado encargado del
+tratamiento.
+El tratamiento de datos personales realizado por el encargado deberá estar regulado por un contrato,
+en el que se establezca de manera clara y precisa que el encargado del tratamiento de datos
+personales tratará únicamente los mismos conforme las instrucciones del responsable y que no los
+utilizará para finalidades diferentes a las señaladas en el contrato, ni que los transferirá o comunicará
+ni siquiera para su conservación a otras personas.
+Una vez que se haya cumplido la prestación contractual, los datos personales deberán ser
+destruidos o devueltos al responsable del tratamiento de datos personales bajo la supervisión de la
+Autoridad de Protección de Datos Personales.
+El encargado será responsable de las infracciones derivadas del incumplimiento de las condiciones
+de tratamiento de datos personales establecidas en la presente ley.
+
+Art. 35.-Acceso a datos personales por parte de terceros.-No se considerará transferencia o
+comunicación cuando el acceso a datos personales por un tercero sea necesario para la prestación
+de un servicio al responsable del tratamiento de datos personales. El tercero que ha accedido a
+datos personales en estas condiciones debió hacerlo legítimamente.
+El tratamiento de datos personales realizado por terceros deberá estar regulado por un contrato, en
+el que se establezca de manera clara y precisa que el encargado del tratamiento de datos
+personales tratará únicamente los mismos conforme las instrucciones del responsable y que no los
+utilizará para finalidades diferentes a las señaladas en el contrato, ni que los transferirá o comunicará
+ni siquiera para su conservación a otras personas.
+Una vez que se haya cumplido la prestación contractual, los datos personales deberán ser
+destruidos o devueltos al responsable del tratamiento de datos personales bajo la supervisión de la
+autoridad de protección de datos personales.
+El tercero será responsable de las infracciones derivadas del incumplimiento de las condiciones de
+tratamiento de datos personales establecidas en la presente ley.
+
+Art. 36.-Excepciones de consentimiento para la transferencia o comunicación de datos personales.-
+No es necesario contar con el consentimiento del titular para la transferencia o comunicación de
+datos personales, en los siguientes supuestos:
+1) Cuando los datos han sido recogidos de fuentes accesibles al público;
+2) Cuando el tratamiento responda a la libre y legítima aceptación de una relación jurídica entre el
+responsable de tratamiento y el titular, cuyo desarrollo, cumplimiento y control implique
+necesariamente la conexión de dicho tratamiento con base de datos. En este caso la transferencia o
+comunicación sólo será legítima en cuanto se limite a la finalidad que la justifique;
+3) Cuando los datos personales deban proporcionarse a autoridades administrativas o judiciales en
+virtud de solicitudes y órdenes amparadas en competencias atribuidas en la norma vigente;
+4) Cuando la comunicación se produzca entre Administraciones Públicas y tenga por objeto el
+tratamiento posterior de datos con fines históricos, estadísticos o científicos, siempre y cuando
+dichos datos se encuentren debidamente disociados o a lo menos anonimizados, y,
+5) Cuando la comunicación de datos de carácter personal relativos a la salud sea necesaria para
+solucionar una urgencia que implique intereses vitales de su titular y este se encontrare impedido de
+otorgar su consentimiento.
+6) Cuando la comunicación de datos de carácter personal relativos a la salud sea necesaria para
+realizar los estudios epidemiológicos de interés público, dando cumplimiento a los estándares
+internacionales en la materia de derechos humanos, y como mínimo a los criterios de legalidad,
+proporcionalidad y necesidad. El tratamiento deberá ser de preferencia anonimizado, y en todo caso
+agregado, una vez pasada la urgencia de interés público.
+Cuando sea requerido el consentimiento del titular para que sus datos personales sean comunicados
+a un tercero, este puede revocarlo en cualquier momento, sin necesidad de que medie justificación
+alguna.
+La presente ley obligatoriamente debe ser aplicada por el destinatario, por el solo hecho de la
+comunicación de los datos; a menos que estos hayan sido anonimizados o sometidos a un proceso
+de (sic).
+
+Art. 37.-Seguridad de datos personales.-El responsable o encargado del tratamiento de datos
+personales según sea el caso, deberá sujetarse al principio de seguridad de datos personales, para
+lo cual deberá tomar en cuenta las categorías y volumen de datos personales, el estado de la
+técnica, mejores prácticas de seguridad integral y los costos de aplicación de acuerdo a la
+naturaleza, alcance, contexto y los fines del tratamiento, así como identificar la probabilidad de
+riesgos.
+El responsable o encargado del tratamiento de datos personales, deberá implementar un proceso de
+verificación, evaluación y valoración continua y permanente de la eficiencia, eficacia y efectividad de
+las medidas de carácter técnico, organizativo y de cualquier otra índole, implementadas con el objeto
+de garantizar y mejorar la seguridad del tratamiento de datos personales.
+El responsable o encargado del tratamiento de datos personales deberá evidenciar que las medidas
+adoptadas e implementadas mitiguen de forma adecuada los riesgos identificados
+Entre otras medidas, se podrán incluir las siguientes;
+1) Medidas de anonimización, seudonomización o cifrado de datos personales;
+2) Medidas dirigidas a mantener la confidencialidad, integridad y disponibilidad permanentes de los
+sistemas y servicios del tratamiento de datos personales y el acceso a los datos personales, de
+forma rápida en caso de incidentes; y
+3) Medidas dirigidas a mejorar la residencia técnica, física, administrativa, y jurídica.
+4) Los responsables y encargados del tratamiento de datos personales, podrán acogerse a
+estándares internacionales para una adecuada gestión de riesgos enfocada a la protección de
+derechos y libertades, así como para la implementación y manejo de sistemas de seguridad de la
+información o a códigos de conducta reconocidos y autorizados por la Autoridad de Protección de
+Datos Personales.
+
+Art. 39.-Protección de datos personales desde el diseño y por defecto.-Se entiende a la protección
+de datos desde el diseño como el deber del responsable del tratamiento de tener en cuenta, en las
+primeras fases de concepción y diseño del proyecto, que determinados tipos de tratamientos de
+datos personales entrañan una serie de riesgos para los derechos de los titulares en atención al
+estado de la técnica, naturaleza y fines del tratamiento, para lo cual, implementará las medidas
+técnicas, organizativas y de cualquier otra índole, con miras a garantizar el cumplimiento de las
+obligaciones en materia de protección de datos, en los términos del reglamento.
+La protección de datos por defecto hace referencia a que el responsable debe aplicar las medidas
+técnicas y organizativas adecuadas con miras a que, por defecto, solo sean objeto de tratamiento los
+datos personales que sean necesarios para cada uno de los fines del tratamiento, en los términos del
+reglamento.
+
+Art. 43.-Notificación de vulneración de seguridad.-El responsable del tratamiento deberá notificar la
+vulneración de la seguridad de datos personales a la Autoridad de Protección de Datos Personales y
+la Agencia de Regulación y Control de las Telecomunicaciones, tan pronto sea posible, y a más
+tardar en el término de cinco (5) días después de que haya tenido constancia de ella, a menos que
+sea improbable que dicha violación de la seguridad constituya un riesgo para los derechos y las
+libertades de las personas físicas. Si la notificación a la Autoridad de Protección de Datos no tiene
+lugar en el término de cinco (5) días, deberá ir acompañada de indicación de los motivos de la
+dilación.
+El encargado del tratamiento deberá notificar al responsable cualquier vulneración de la seguridad de
+datos personales tan pronto sea posible, y a más tardar dentro del término de dos (2) días contados
+a partir de la fecha en la que tenga conocimiento de ella.
+
+Art. 46.-Notificación de vulneración de seguridad al titular.-El responsable del tratamiento deberá
+notificar sin dilación la vulneración de seguridad de datos personales al titular cuando conlleve un
+riesgo a sus derechos fundamentales y libertades individuales, dentro del término de tres días
+contados a partir de la fecha en la que tuvo conocimiento del riesgo.
+No se deberá notificar la vulneración de seguridad de datos personales al titular en los siguientes
+casos:
+1. Cuando el responsable del tratamiento haya adoptado medidas de protección técnicas
+organizativas o de cualquier otra índole apropiadas aplicadas a los datos personales afectados por la
+vulneración de seguridad que se pueda demostrar que son efectivas;
+2. Cuando el responsable del tratamiento haya tomado medidas que garanticen que el riesgo para
+los derechos fundamentales y las libertades individuales del titular, no ocurrirá; y,
+3. Cuando se requiera un esfuerzo desproporcionado para hacerlo; en cuyo caso, el responsable del
+tratamiento deberá realizar una comunicación pública a través de cualquier medio en la que se
+informe de la vulneración de seguridad de datos personales a los titulares.
+La procedencia de las excepciones de les numerales 1 y 2 deberá ser calificada por la Autoridad de
+Protección de Datos, una vez informada esta tan pronto sea posible, y en cualquier caso dentro de
+los plazos contemplados en el Artículo 43.
+La notificación al titular del dato objeto de la vulneración de seguridad contendrá lo señalado en el
+artículo 43 de esta ley.
+En caso de que el responsable del tratamiento de los datos personales no cumpliese oportunamente
+y de modo justificado con la notificación será sancionado conforme al régimen sancionatorio previsto
+en esta ley.
+La notificación oportuna de la violación por parte del responsable de tratamiento al titular y la
+ejecución oportuna de medidas de respuesta, serán consideradas atenuante de la infra (sic).
+
+Art. 47.-Obligaciones del responsable y encargado del tratamiento de datos personales.-El
+responsable del tratamiento de datos personales está obligado a:
+1) Tratar datos personales en estricto apego a los principios y derechos desarrollados en la presente
+Ley, en su reglamento, en directrices, lineamientos y regulaciones emitidas por la Autoridad de
+Protección de Datos Personales, o normativa sobre la materia;
+2) Aplicar e implementar requisitos y herramientas administrativas, técnicas, físicas, organizativas y
+jurídicas apropiadas, a fin de garantizar y demostrar que el tratamiento de datos personales se ha
+realizado conforme a lo previsto en la presente Ley, en su reglamento, en directrices, lineamientos y
+regulaciones emitidas por la Autoridad de Protección de Datos Personales, o normativa sobre la
+materia;
+3) Aplicar e implementar procesos de verificación, evaluación, valoración periódica de la eficiencia,
+eficacia y efectividad de los requisitos y herramientas administrativas, Técnicas, físicas, organizativas
+y jurídicas implementadas;
+4) Implementar políticas de protección de datos personales afines al tratamiento de datos personales
+en cada caso en particular;
+5) Utilizar metodologías de análisis y gestión de riesgos adaptadas a las particularidades del
+tratamiento y de las partes involucradas;
+6) Realizar evaluaciones de adecuación al nivel de seguridad previas al tratamiento de datos
+personales;
+7) Tomar medidas tecnológicas, físicas, administrativas, organizativas y jurídicas necesarias para
+prevenir, impedir, reducir, mitigar y controlar los riesgos y las vulneraciones identificadas;
+8) Notificar a la Autoridad de Protección de Datos Personales y al titular de los datos acerca de
+violaciones a las seguridades implementadas para el tratamiento de datos personales conforme a lo
+establecido en el procedimiento previsto para el efecto;
+9) Implementar la protección de datos personales desde el diseño y por defecto;
+10) Suscribir contratos de confidencialidad y manejo adecuado de datos personales con el
+encargado y el personal a cargo del tratamiento de datos personales o que tenga conocimiento de
+los datos personales;
+11) Asegurar que el encargado del tratamiento de datos personales ofrezca mecanismos suficientes
+para garantizar el derecho a la protección de datos personales conforme a lo establecido en la
+presente ley, en su reglamento, en directrices, lineamientos y regulaciones emitidas por la Autoridad
+de Protección de Datos Personales, normativa sobre la materia y las mejores prácticas a nivel
+nacional o internacional;
+12) Registrar y mantener actualizado el Registro Nacional de Protección de Datos Personales, de
+conformidad a lo dispuesto en la presente Ley, en su reglamento, en directrices, lineamientos y
+regulaciones emitidas por la Autoridad de Protección de Datos Personales;
+13) Designar al Delegado de Protección de Datos Personales, en los casos que corresponda;
+14) Permitir y contribuir a la realización de auditorías o inspecciones, por parte de un auditor
+acreditado por la Autoridad de Protección de Datos Personales; y,
+15) Los demás establecidos en la presente Ley en su reglamento, en directrices, lineamientos,
+regulaciones emitidas por la Autoridad de Protección de Datos Personales y normativa sobre la
+materia.
+El encargado de tratamiento de datos personales tendrá las mismas obligaciones que el responsable
+de tratamiento de datos personales, en lo que sea aplicable, de acuerdo a la presente ley y su
+reglamento.
+
+Art. 55.-Transferencia o comunicación internacional de datos personales.-La transferencia o
+comunicación internacional de datos personales será posible si se sujeta a lo previsto en el presente
+capítulo, la presente Ley o la normativa especializada en la materia, propendiendo siempre al
+efectivo ejercicio del derecho a la protección de datos personales.
+
+Art. 57.-Transferencia o comunicación mediante garantías adecuadas.-En caso de realizar una
+transferencia internacional de datos a un país, organización o territorio económico internacional que
+no haya sido calificado por la Autoridad de Protección de Datos de tener un nivel adecuado de
+protección, se podrá realizar la referida transferencia internacional siempre que el responsable o
+encargado del tratamiento de datos personales ofrezca garantías adecuadas para el titular, para lo
+cual se deberá observar lo siguiente:
+a. Garantizar el cumplimiento de principios, derechos y obligaciones en el tratamiento de datos
+personales en un estándar igual o mayor a la normativa ecuatoriana vigente.
+b. Efectiva tutela del derecho a la protección de datos personales, a través de la disponibilidad
+permanente de acciones administrativas o judiciales; y,
+c. El derecho a solicitar la reparación integral, de ser el caso.
+Para que ello ocurra, la transferencia internacional de datos personales se sustentará en un
+instrumento jurídico que contemple los estándares antes determinados, así como aquellos que
+establezca la Autoridad de Protección de Datos Personales, el mismo que deberá ser vinculante.
+
+Art. 67.-Infracciones leves del Responsable de protección de datos.-Se consideran infracciones
+leves las siguientes:
+1. No tramitar, tramitar fuera del término previsto o negar injustificadamente las peticiones o quejas
+realizadas por el titular;
+2. No implementar protección de datos desde el diseño y por defecto;
+3. No mantener disponibles políticas de protección de datos personales afines al tratamiento de
+datos personales;
+4. Elegir un encargado del tratamiento de datos personales que no ofrezca garantías suficientes para
+hacer efectivo el ejercicio del derecho a la protección de datos personales;
+5. Incumplir las medidas correctivas dispuestas por la Autoridad de Protección de Datos Personales.
+
+Art. 68.-Infracciones graves del Responsable de protección de datos.-Se consideran infracciones
+graves las siguientes:
+1) No implementar medidas administrativas, técnicas y físicas, organizativas y jurídicas, a fin de
+garantizar el tratamiento de datos personales que realice conforme la presente ley, su reglamento,
+directrices, lineamientos y regulaciones emitidas por la Autoridad de Protección de Datos Personales
+y normativas sobre la materia;
+2) Utilizar información o datos para fines distintos a los declarados;
+3) Ceder o comunicar datos personales sin cumplir con los requisitos y procedimientos establecidos
+en la presente ley y su reglamento, directrices lineamientos y regulaciones emitidas por la Autoridad
+de Protección de Datos Personales y normativas sobre la materia;
+4) No utilizar metodologías de análisis y gestión de riesgos adaptadas a la naturaleza de los datos
+personales las particularidades del tratamiento y de las partes involucradas;
+5) No realizar evaluaciones de impacto al tratamiento de datos en los casos en que era necesario
+realizarlas;
+6) No implementar medidas técnicas organizativas o de cualquier índole, necesarias para prevenir,
+impedir, reducir, mitigar y controlar los riesgos y las vulneraciones a la seguridad de datos
+personales que hayan sido identificadas;
+7) No notificar a la Autoridad de Protección de Datos Personales y al titular, de vulneraciones a la
+seguridad y protección de datos personales, cuando afecte los derechos fundamentales y libertades
+individuales de los titulares;
+8) No notificar a la Autoridad de Protección de Datos Personales del titular las vulneraciones de
+seguridad y protección de datos personales, cuando exista afectación a los derechos fundamentales
+y libertades individuales de los titulares;
+9) No suscribir contratos que incluyan cláusulas de confidencialidad y tratamiento adecuado de datos
+personales con el encargado y el personal a cargo del tratamiento de datos personales o que tenga
+conocimiento de los datos personales;
+10) No mantener actualizado el Registro Nacional de protección de datos personales de conformidad
+a lo dispuesto en la presente ley su reglamento, directrices, lineamientos y regulaciones emitidas por
+la Autoridad de Protección de Datos Personales y normativas sobre la materia;
+11) No consignar en el Registro Nacional de Protección de Datos Personales lo dispuesto en la
+presente ley y su reglamento, directrices, lineamientos y regulaciones emitidas por la Autoridad de
+Protección de Datos Personales y normativas sobre la materia;
+12) No designar al delegado de protección de datos personales cuando corresponda;
+13) No permitir y no contribuir a la realización de auditorías o inspecciones por parte del auditor
+acreditado por la Autoridad de Protección de Datos Personales; y,
+14) Incumplir las medidas correctivas o cumplir de forma tardía, parcial o defectuosa, siempre y
+cuando hubiese precedido por dicha causa la aplicación de una sanción por infracción leve, e incurrir
+de forma reiterada en faltas leves.
+
+Art. 69.-Infracciones leves del Encargado de protección de datos.-Se consideran infracciones leves
+las siguientes:
+1) No colaborar con el responsable del tratamiento datos personales, para que este cumpla con su
+obligación de atender solicitudes que tengan por objeto el ejercicio de los derechos del titular frente
+al tratamiento de sus datos personales;
+2) No facilitar el acceso al responsable del tratamiento de datos personales a toda la información
+referente al cumplimiento de las obligaciones establecidas en la presente Ley, su reglamento,
+directrices, lineamientos y regulaciones emitidas por la Autoridad de Protección de Datos Personales
+y normativa sobre la materia;
+3) No permitir o no contribuir a la realización de auditorías o inspecciones, por parte del responsable
+del tratamiento de datos personales o de otro auditor autorizado por la Autoridad de Protección, de
+Datos Personales y,
+4) Incumplir las medidas correctivas dispuestas por la Autoridad de Protección de Datos Personales.
+
+Art. 70.-Infracciones graves del Encargado de protección de datos.-Se consideran infracciones
+graves las siguientes:
+1) Realizar tratamientos de datos personales sin observar los principios y derechos desarrollados en
+la presente Ley y su reglamento, directrices y lineamientos y regulaciones emitidas por la Autoridad
+de Protección de Datos Personales y normativas sobre la materia;
+2) No tratar datos personales de conformidad con lo previsto, en el contrato que mantenga con el
+responsable del tratamiento de datos personales inclusive en lo que respecta a la transferencia o
+comunicación internacional;
+3) No suscribir contratos que contengan cláusulas de confidencialidad y tratamiento adecuado de
+datos personales con el personal a cargo del tratamiento de datos personales o quien tenga
+conocimiento de los datos personales;
+4) No implementar mecanismos destinados a mantener la confidencialidad, integridad, disponibilidad
+y resiliencia de los datos personales; 
+5) No implementar medidas preventivas y correctivas en la seguridad de los datos personales a fin
+de evitar vulneraciones;
+6) No suprimir los datos personales transferidos o comunicados al responsable del tratamiento de los
+datos personales, una vez haya culminado su encargo;
+7) Proceder a la comunicación de datos personales sin cumplir con los requisitos y procedimientos
+establecidos en la presente ley, su reglamento directrices lineamientos y regulaciones emitidas por la
+Autoridad de Protección de Datos Personales y normativas sobre la materia;
+8) Incumplir las medidas correctivas o cumplirlas de forma tardía parcial o defectuosa, siempre y
+cuando hubiese precedido por dicha causa la aplicación de una sanción por infracción leve; y,
+9) No notificar al responsable del tratamiento de datos personales sobre cualquier vulneración de la
+seguridad de datos personales conforme dispone esta ley o hacerlo con retraso injustificado.
+
+Art. 71.-Sanciones por infracciones leves.-La Autoridad de Protección de Datos Personales
+impondrá las siguientes sanciones administrativas, en el caso de verificarse el cometimiento de una
+infracción leve, según las siguientes reglas:
+1. Servidores o funcionarios del sector público por cuya acción u omisión hayan incurrido en alguna
+de las infracciones leves establecidas en la presente ley, serán sancionados con una multa de uno
+(1) a diez (10) salarios básicos unificados del trabajador en general, sin perjuicio de la
+responsabilidad extracontractual del Estado, la cual se sujetará a las reglas establecidas en la
+normativa correspondiente;
+2. Si el responsable o el encargado del tratamiento de datos personales o de ser el caso un tercero
+es una entidad de derecho privado o una empresa pública, se aplicará una multa de entre el 0.1% y
+el 0.7% calculada sobre su volumen de negocio correspondiente al ejercicio económico
+inmediatamente anterior al de la imposición de la multa. La Autoridad de Protección de Datos
+Personales establecerá la multa aplicable en función del principio de proporcionalidad, para lo cual
+deberá verificar los siguientes presupuestos:
+a) La intencionalidad, misma que se establecerá en función a la conducta del infractor;
+b) Reiteración de la infracción, es decir cuando el responsable, el encargado del tratamiento de datos
+personales o de ser el caso un tercero, hubiese sido previamente sancionado por dos o más
+infracciones precedentes, que establezcan sanciones de menor gravedad a la que se pretende
+aplicar; o cuando hubiesen sido previamente sancionados por una infracción cuya sanción sea de
+igual o mayor gravedad a la que se pretende aplicar;
+c) La naturaleza del perjuicio ocasionado, es decir, las consecuencias lesivas para el ejercicio del
+derecho a la protección de datos personales; y,
+d) Reincidencia, es decir, cuando la infracción precedente sea de la misma naturaleza de aquella
+que se pretende sancionar.
+
+Art. 72.-Sanciones por infracciones graves.-La Autoridad de Protección de Datos Personales
+impondrán las siguientes sanciones administrativas, en el caso de verificarse el cometimiento de una
+infracción grave, conforme a los presupuestos establecidos en el presente Capítulo:
+Los servidores o funcionarios del sector público por cuya acción u omisión hayan incurrido en alguna
+de las infracciones graves establecidas en la presente ley serán sancionados con una multa de entre
+10 a 20 salarios básicos unificados del trabajador en general; sin perjuicio de la Responsabilidad
+Extracontractual del Estado, la cual se sujetará a las reglas establecidas en la normativa
+correspondiente;
+1) Si el responsable, encargado del tratamiento de datos personales o de ser el caso un tercero, es
+una entidad de derecho privado o una empresa pública se aplicará una multa de entre el 0.7% y el
+1% calculada sobre su volumen de negocios, correspondiente al ejercicio económico
+inmediatamente anterior al de la imposición de la multa. La Autoridad de Protección de Datos
+Personales establecerá la multa aplicable en función del principio de proporcionalidad, para lo cual
+deberá verificar los siguientes presupuestos:
+a) La intencionalidad, misma que se establecerá en función a la conducta del infractor;
+b) Reiteración de la infracción, es decir, cuando el responsable, encargado del tratamiento de datos
+personales o de ser el caso, de un tercero hubiese sido previamente sancionado por dos o más
+infracciones precedentes que establezcan sanciones de menor gravedad a la que se pretende
+aplicar; o cuando hubiesen sido previamente sancionados por una infracción cuya sanción sea de
+igual o mayor gravedad a la que se pretende aplicar;
+c) La naturaleza del perjuicio ocasionado, es decir, las consecuencias lesivas para el ejercicio del
+derecho a la protección de datos personales; y,
+d) Reincidencia, es decir, cuando la infracción precedente sea de la misma naturaleza de aquella
+que se pretende sancionar.
+En el caso de que el responsable, encargado del tratamiento de datos personales a un tercero de ser
+el caso; sea una organización sin domicilio ni representación jurídica en el territorio ecuatoriano, se
+deberá notificar de la resolución con la cual se establezca la infracción cometida la Autoridad de
+Protección de Datos Personales, o quien hiciera sus veces, del lugar en donde dicha organización
+tiene su domicilio principal, a fin de que sea dicho organismo quien sustancia las acciones o
+procedimientos destinados al cumplimiento de las medidas correctivas y sanciones a las que hubiere
+lugar.
+
+
+
+

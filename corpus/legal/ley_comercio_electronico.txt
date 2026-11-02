@@ -1,0 +1,167 @@
+Art. 2.- Reconocimiento jurídico de los mensajes de datos.- Los mensajes de datos tendrán igual valor
+jurídico que los documentos escritos. Su eficacia, valoración y efectos se someterá al cumplimiento de lo
+establecido en esta ley y su reglamento
+
+Art. 3.- Incorporación por remisión.- Se reconoce validez jurídica a la información no contenida
+directamente en un mensaje de datos, siempre que figure en el mismo, en forma de remisión o de anexo
+accesible mediante un enlace electrónico directo y su contenido sea conocido y aceptado expresamente
+por las partes.
+
+Art. 4.- Propiedad intelectual.- Los mensajes de datos estarán sometidos a las leyes, reglamentos y
+acuerdos internacionales relativos a la propiedad intelectual.
+
+Art. 5.- Confidencialidad y reserva.- Se establecen los principios de confidencialidad y reserva para los
+mensajes de datos, cualquiera sea su forma, medio o intención. Toda violación a estos principios,
+principalmente aquellas referidas a la intrusión electrónica, transferencia ilegal de mensajes de datos o
+violación del secreto profesional, será sancionada conforme a lo dispuesto en esta ley y demás normas
+que rigen la materia.
+
+Art. 6.- Información escrita.- Cuando la ley requiera u obligue que la información conste por escrito, este
+requisito quedará cumplido con un mensaje de datos, siempre que la información que este contenga sea
+accesible para su posterior consulta.
+
+Art. 10.- Procedencia e identidad de un mensaje de datos.- Salvo prueba en contrario se entenderá que
+un mensaje de datos proviene de quien lo envía y, autoriza a quien lo recibe, para actuar conforme al
+contenido del mismo, cuando de su verificación exista concordancia entre la identificación del emisor y su
+firma electrónica, excepto en los siguiente casos:
+a) Si se hubiere dado aviso que el mensaje de datos no proviene de quien consta como emisor; en este
+caso, el aviso se lo hará antes de que la persona que lo recibe actúe conforme a dicho mensaje. En caso
+contrario, quien conste como emisor deberá justificar plenamente que el mensaje de datos no se inició por
+orden suya o que el mismo fue alterado; y,
+b) Si el destinatario no hubiere efectuado diligentemente las verificaciones correspondientes o hizo caso
+omiso de su resultado.
+
+Art. 11.- Envío y recepción de los mensajes de datos.- Salvo pacto en contrario, se presumirá que el
+tiempo y lugar de emisión y recepción del mensaje de datos, son los siguientes:
+a) Momento de emisión del mensaje de datos.- Cuando el mensaje de datos ingrese en un sistema de
+información o red electrónica que no esté bajo control del emisor o de la persona que envió el mensaje en
+nombre de éste o del dispositivo electrónico autorizado para el efecto;
+b) Momento de recepción del mensaje de datos.- Cuando el mensaje de datos ingrese al sistema de
+información o red electrónica señalado por el destinatario. Si el destinatario designa otro sistema de
+información o red electrónica, el momento de recepción se presumirá aquel en que se produzca la
+recuperación del mensaje de datos. De no haberse señalado un lugar preciso de recepción, se entenderá
+que ésta ocurre cuando el mensaje de datos ingresa a un sistema de información o red electrónica del
+destinatario, independientemente de haberse recuperado o no el mensaje de datos; y,
+c) Lugares de envío y recepción.- Los acordados por las partes, sus domicilios legales o los que consten
+en el certificado de firma electrónica, del emisor y del destinatario. Si no se los pudiere establecer por
+estos medios, se tendrán por tales, el lugar de trabajo, o donde desarrollen el giro principal de sus
+actividades o la actividad relacionada con el mensaje de datos.
+
+Art. 13.- Firma electrónica.- Son los datos en forma electrónica consignados en un mensaje de datos,
+adjuntados o lógicamente asociados al mismo, y que puedan ser utilizados para identificar al titular de la
+firma en relación con el mensaje de datos, e indicar que el titular de la firma aprueba y reconoce la
+información contenida en el mensaje de datos.
+
+Art. 14.- Efectos de la firma electrónica.- La firma electrónica tendrá igual validez y se le reconocerán los
+mismos efectos jurídicos que a una firma manuscrita en relación con los datos consignados en
+documentos escritos, y será admitida como prueba en juicio.
+
+Art. 15.- Requisitos de la firma electrónica.- Para su validez, la firma electrónica reunirá los siguientes
+requisitos, sin perjuicio de los que puedan establecerse por acuerdo entre las partes:
+a) Ser individual y estar vinculada exclusivamente a su titular;
+b) Que permita verificar inequívocamente la autoría e identidad del signatario, mediante dispositivos
+técnicos de comprobación establecidos por esta ley y sus reglamentos;
+c) Que su método de creación y verificación sea confiable, seguro e inalterable para el propósito para el
+cual el mensaje fue generado o comunicado;
+d) Que al momento de creación de la firma electrónica, los datos con los que se creare se hallen bajo
+control exclusivo del signatario, y,
+e) Que la firma sea controlada por la persona a quien pertenece
+
+Art. 16.- La firma electrónica en un mensaje de datos.- Cuando se fijare la firma electrónica en un
+mensaje de datos, aquélla deberá enviarse en un mismo acto como parte integrante del mensaje de datos
+o lógicamente asociada a éste. Se presumirá legalmente que el mensaje de datos firmado
+electrónicamente conlleva la voluntad del emisor, quien se someterá al cumplimiento de las obligaciones
+contenidas, en dicho mensaje de datos, de acuerdo a lo determinado en la ley.
+
+Art. 17.- Obligaciones del titular de la firma electrónica.- El titular de la firma electrónica deberá:
+a) Cumplir con las obligaciones derivadas del uso de la firma electrónica;
+b) Actuar con la debida diligencia y tomar las medidas de seguridad necesarias, para mantener la firma
+LEY DE COMERCIO ELECTRÓNICO, FIRMAS Y MENSAJES DE DATOS Página 8 de 25
+electrónica bajo su estricto control y evitar toda utilización no autorizada;
+c) Notificar por cualquier medio a las personas vinculadas, cuando exista el riesgo de que su firma sea
+controlada por terceros no autorizados y utilizada indebidamente;
+d) Verificar la exactitud de sus declaraciones;
+e) Responder por las obligaciones derivadas del uso no autorizado de su firma, cuando no hubiere obrado
+con la debida diligencia para impedir su utilización, salvo que el destinatario conociere de la inseguridad
+de la firma electrónica o no hubiere actuado con la debida diligencia;
+f) Notificar a la entidad de certificación de información los riesgos sobre su firma y solicitar oportunamente
+la cancelación de los certificados; y,
+g) Las demás señaladas en la ley y sus reglamentos
+
+Art. 20.- Certificado de firma electrónica.- Es el mensaje de datos que certifica la vinculación de una firma
+electrónica con una persona determinada, a través de un proceso de comprobación que confirma su
+identidad.
+
+Art. 22.- Requisitos del certificado de firma electrónica.- El Certificado de firma electrónica para ser
+considerado válido contendrá los siguientes requisitos:
+a) Identificación de la entidad de certificación de información;
+b) Domicilio legal de la entidad de certificación de información;
+c) Los datos del titular del certificado que permitan su ubicación e identificación;
+d) El método de verificación de la firma del titular del certificado;
+e) Las fechas de emisión y expiración del certificado;
+f) El número único de serie que identifica el certificado;
+g) La firma electrónica de la entidad de certificación de información;
+h) Las limitaciones o restricciones para los usos del certificado; e,
+i) Los demás señalados en esta ley y los reglamentos.
+
+Art. 28.- Reconocimiento internacional de certificados de firma electrónica.- Los certificados electrónicos
+emitidos por entidades de certificación extranjeras, que cumplieren con los requisitos señalados en esta
+ley y presenten un grado de fiabilidad equivalente, tendrán el mismo valor legal que los certificados
+acreditados, expedidos en el Ecuador. El Consejo Nacional de Telecomunicaciones dictará el reglamento
+correspondiente para la aplicación de este artículo.
+Las firmas electrónicas creadas en el extranjero, para el reconocimiento de su validez en el Ecuador se
+someterán a lo previsto en esta ley y su reglamento.
+Cuando las partes acuerden entre sí la utilización de determinados tipos de firmas electrónicas y
+certificados, se reconocerá que ese acuerdo es suficiente en derecho.
+Salvo aquellos casos en los que el Estado, en virtud de convenios o tratados internacionales haya
+pactado la utilización de medios convencionales, los tratados o convenios que sobre esta materia se
+suscriban, buscarán la armonización de normas respecto de la regulación de mensajes de datos, la firma
+electrónica, los servicios de certificación, la contratación electrónica y telemática, la prestación de
+servicios electrónicos, a través de redes de información, incluido el comercio electrónico, la protección a
+los usuarios de estos sistemas, y el reconocimiento de los certificados de firma electrónica entre los
+países suscriptores.
+
+Art. 44.- Cumplimiento, de formalidades.- Cualquier actividad, transacción mercantil, financiera o de
+servicios, que se realice con mensajes de datos, a través de redes electrónicas, se someterá a los
+requisitos y solemnidades establecidos en la ley que las rija, en todo lo que fuere aplicable, y tendrá el
+mismo valor y los mismos efectos jurídicos que los señalados en dicha ley.
+
+Art. 45.- Validez de los contratos electrónicos.- Los contratos podrán ser instrumentados mediante
+mensajes de datos. No se negará validez o fuerza obligatoria a un contrato por la sola razón de haberse
+utilizado en su formación uno o más mensajes de datos.
+
+Art. 46.- Perfeccionamiento y aceptación de los contratos electrónicos.- El perfeccionamiento de los
+contratos electrónicos se someterá a los requisitos y solemnidades previstos en las leyes y se tendrá
+como lugar de perfeccionamiento el que acordaren las partes.
+La recepción, confirmación de recepción, o apertura del mensaje de datos, no implica aceptación del
+contrato electrónico, salvo acuerdo de las partes.
+
+Art. 47.- Jurisdicción.- En caso de controversias las partes se someterán a la jurisdicción estipulada en el
+contrato; a falta de ésta, se sujetarán a las normas previstas por el Código de Procedimiento Civil
+Ecuatoriano y esta ley, siempre que no se trate de un contrato sometido a la Ley Orgánica de Defensa del
+Consumidor, en cuyo caso se determinará como domicilio el del consumidor o usuario.
+
+Art. 52.- Medios de prueba.- Los mensajes de datos, firmas electrónicas, documentos electrónicos y los
+certificados electrónicos nacionales o extranjeros, emitidos de conformidad con esta ley, cualquiera sea
+su procedencia o generación, serán considerados medios de prueba. Para su valoración y efectos legales
+se observará lo dispuesto en el Código de Procedimiento Civil.
+
+Art. 53.- Presunción.- Cuando se presentare como prueba una firma electrónica certificada por una
+entidad de certificación de información acreditada, se presumirá que ésta reúne los requisitos
+determinados en la ley, y que por consiguiente, los datos de la firma electrónica no han sido alterados
+desde su emisión y que la firma electrónica pertenece al signatario.
+
+Art. 55.- Valoración de la prueba.- La prueba será valorada bajo los principios determinados en la ley y
+tomando en cuenta la seguridad y fiabilidad de los medios con los cuales se la envió, recibió, verificó,
+almacenó o comprobó si fuese el caso, sin perjuicio de que dicha valoración se efectúe con el empleo de
+otros métodos que aconsejen la técnica y la tecnología. En todo caso la valoración de la prueba se
+someterá al libre criterio judicial, según las circunstancias en que hayan sido producidos.
+Para la valoración de las pruebas, el juez o árbitro competente que conozca el caso deberá designar los
+peritos que considere necesarios para el análisis y estudio técnico y tecnológico de las pruebas
+presentadas.
+
+
+
+
+
+
