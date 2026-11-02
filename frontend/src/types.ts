@@ -73,6 +73,32 @@ export interface ClausulaContrato {
   categoria_riesgo: { codigo: string; nombre: string } | null;
   explicacion: string | null;
   fundamentos: Fundamento[];
+  contrapropuesta: Contrapropuesta | null;
+}
+
+
+export type CodigoEstadoContrapropuesta = "GENERADA" | "ACEPTADA" | "MODIFICADA" | "RECHAZADA";
+
+/** Redacción alternativa de una cláusula riesgosa y en qué quedó la negociación. */
+export interface Contrapropuesta {
+  id_contrapropuesta: number;
+  estado: { codigo: CodigoEstadoContrapropuesta; nombre: string; color_hex: string };
+  texto_propuesto: string;
+  texto_acordado: string | null;
+  justificacion: string | null;
+  fecha_modificacion: string | null;
+}
+
+export type CodigoTonoCorreo = "FORMAL" | "CORDIAL";
+
+/** Correo de negociación redactado para la otra parte. */
+export interface CorreoNegociacion {
+  id_correo: number;
+  destinatario: string | null;
+  tono: { codigo: CodigoTonoCorreo; nombre: string };
+  asunto: string;
+  cuerpo: string;
+  fecha_creacion: string;
 }
 
 export type CodigoRolParte = "PRESTADOR" | "CONTRATANTE";

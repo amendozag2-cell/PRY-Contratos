@@ -6,7 +6,7 @@ from app.config import settings
 from app.db import engine
 from app.routers import administracion, autenticacion, contratos, corpus
 
-app = FastAPI(title="Detección de Riesgos Contractuales API", version="0.6.0")
+app = FastAPI(title="Detección de Riesgos Contractuales API", version="0.7.0")
 
 app.add_middleware(
     CORSMiddleware,

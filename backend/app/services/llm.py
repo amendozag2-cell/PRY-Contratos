@@ -35,6 +35,18 @@ class VerificacionCondicion(BaseModel):
     clausula: int | None = Field(description="Número de la cláusula que trata la condición, o null si ninguna")
     explicacion: str = Field(description="Máximo dos oraciones en español sencillo")
 
+class ContrapropuestaGenerada(BaseModel):
+    """Redacción alternativa de una cláusula riesgosa."""
+
+    texto_propuesto: str = Field(description="Cláusula reescrita, lista para reemplazar a la original")
+    justificacion: str = Field(description="Máximo tres oraciones en español sencillo")
+
+
+class CorreoGenerado(BaseModel):
+    """Correo de negociación para la otra parte."""
+
+    asunto: str = Field(description="Asunto breve que mencione el contrato")
+    cuerpo: str = Field(description="Texto completo del correo, sin markdown")
 
 Formato = TypeVar("Formato", bound=BaseModel)
 

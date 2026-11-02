@@ -1,6 +1,6 @@
 from pathlib import Path
 from typing import Annotated
-from typing import Annotated
+
 from fastapi import APIRouter, File, Form, HTTPException, Query, Request, Response, UploadFile, status
 from fastapi.responses import FileResponse
 from sqlalchemy import func, select
@@ -22,6 +22,7 @@ from app.models import (
     Clausula,
     ClausulaFundamento,
     Condicion,
+    Contrapropuesta,
     Contrato,
     DocumentoRag,
     FragmentoRag,
@@ -35,11 +36,17 @@ from app.schemas import (
     CoberturaSalida,
     CondicionSalida,
     ContextoEntrada,
+    ContrapropuestaSalida,
+    ContrapropuestasEntrada,
     ContratoDetalle,
     ContratoSalida,
+    CorreoEntrada,
+    CorreoSalida,
+    EstadoContrapropuestaSalida,
     FundamentoSalida,
     NivelRiesgoSalida,
     OpcionCatalogo,
+    RespuestaContrapropuestaEntrada,
 )
 from app.services.analisis import ErrorAnalisis, analizar_contrato
 from app.services.auditoria import registrar_evento
@@ -54,7 +61,15 @@ from app.services.corpus import ErrorCorpus
 from app.services.embeddings import ErrorEmbeddings
 from app.services.extraccion import ErrorExtraccion
 from app.services.llm import ErrorLLM
+from app.services.negociacion import (
+    ErrorNegociacion,
+    generar_contrapropuestas,
+    generar_correo,
+    listar_correos,
+    responder_contrapropuesta,
+)
 from app.services.procesamiento_pdf import renderizar_pagina
+from app.services.reporte import generar_reporte
 
 router = APIRouter(prefix="/contratos", tags=["Contratos"])
 
@@ -238,6 +253,24 @@ def _detalle(db, fila) -> ContratoDetalle:
                 similitud=float(cf.similitud),
             ))
 
+    contrapropuestas: dict[int, ContrapropuestaSalida] = {}
+    if ids:
+        estado_cp = aliased(CatalogoDetalle)
+        for cp, est in db.execute(
+            select(Contrapropuesta, estado_cp)
+            .join(estado_cp, estado_cp.id_catalogo_detalle == Contrapropuesta.id_estado_contrapropuesta)
+            .where(Contrapropuesta.id_clausula.in_(ids), Contrapropuesta.estado == ESTADO_ACTIVO)
+        ).all():
+            contrapropuestas[cp.id_clausula] = ContrapropuestaSalida(
+                id_contrapropuesta=cp.id_contrapropuesta,
+                estado=EstadoContrapropuestaSalida(codigo=est.codigo, nombre=est.nombre,
+                                                   color_hex=est.valor or "#2563EB"),
+                texto_propuesto=cp.texto_propuesto,
+                texto_acordado=cp.texto_acordado,
+                justificacion=cp.justificacion,
+                fecha_modificacion=cp.fecha_modificacion or cp.fecha_creacion,
+            )
+
     clausulas = []
     for c, nivel, cat in filas:
         salida = ClausulaSalida.model_validate(c)
@@ -245,6 +278,7 @@ def _detalle(db, fila) -> ContratoDetalle:
         salida.categoria_riesgo = OpcionCatalogo(codigo=cat.codigo, nombre=cat.nombre) if cat else None
         salida.explicacion = c.explicacion
         salida.fundamentos = fundamentos.get(c.id_clausula, [])
+        salida.contrapropuesta = contrapropuestas.get(c.id_clausula)
         clausulas.append(salida)
 
     cobertura = aliased(CatalogoDetalle)
@@ -360,3 +394,84 @@ def inactivar(id_contrato: int, request: Request, db: DbSession, usuario: Usuari
         datos_nuevos={"estado": "I", "archivo": contrato.nombre_archivo},
     )
     db.commit()
+
+
+
+# ------------------------------------------------------------ negociación
+@router.post("/{id_contrato}/contrapropuestas", response_model=ContratoDetalle)
+def contrapropuestas(id_contrato: int, request: Request, db: DbSession, usuario: UsuarioActual,
+                     datos: ContrapropuestasEntrada | None = None):
+    """Redacta contrapropuestas para las cláusulas de riesgo alto y medio (o solo las indicadas)."""
+    contrato = _obtener_propio(db, id_contrato, usuario)[0]
+    try:
+        generar_contrapropuestas(db, request, usuario, contrato, datos.ids_clausula if datos else None)
+    except ErrorNegociacion as error:
+        raise HTTPException(status.HTTP_422_UNPROCESSABLE_CONTENT, str(error))
+    except ErrorLLM as error:
+        db.rollback()
+        raise HTTPException(status.HTTP_502_BAD_GATEWAY, str(error))
+    return _detalle(db, _obtener_propio(db, id_contrato, usuario))
+
+
+@router.patch("/{id_contrato}/clausulas/{id_clausula}/contrapropuesta", response_model=ContratoDetalle)
+def responder(id_contrato: int, id_clausula: int, datos: RespuestaContrapropuestaEntrada,
+              request: Request, db: DbSession, usuario: UsuarioActual):
+    """Registra si la otra parte aceptó, aceptó con cambios o rechazó la contrapropuesta."""
+    contrato = _obtener_propio(db, id_contrato, usuario)[0]
+    try:
+        responder_contrapropuesta(db, request, usuario, contrato, id_clausula, datos.estado, datos.texto_acordado)
+    except LookupError as error:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, str(error))
+    except ErrorNegociacion as error:
+        raise HTTPException(status.HTTP_422_UNPROCESSABLE_CONTENT, str(error))
+    return _detalle(db, _obtener_propio(db, id_contrato, usuario))
+
+
+def _correo_salida(correo, tono) -> CorreoSalida:
+    return CorreoSalida(
+        id_correo=correo.id_correo,
+        destinatario=correo.destinatario,
+        tono=OpcionCatalogo(codigo=tono.codigo, nombre=tono.nombre),
+        asunto=correo.asunto,
+        cuerpo=correo.cuerpo,
+        fecha_creacion=correo.fecha_creacion,
+    )
+
+
+@router.get("/{id_contrato}/correos", response_model=list[CorreoSalida])
+def correos(id_contrato: int, db: DbSession, usuario: UsuarioActual):
+    """Correos de negociación redactados antes para este contrato (el más reciente primero)."""
+    contrato = _obtener_propio(db, id_contrato, usuario)[0]
+    return [_correo_salida(c, t) for c, t in listar_correos(db, contrato)]
+
+
+@router.post("/{id_contrato}/correos", response_model=CorreoSalida, status_code=status.HTTP_201_CREATED)
+def redactar_correo(id_contrato: int, datos: CorreoEntrada, request: Request,
+                    db: DbSession, usuario: UsuarioActual):
+    """Redacta el correo para pedir a la otra parte los cambios del contrato."""
+    contrato = _obtener_propio(db, id_contrato, usuario)[0]
+    try:
+        correo = generar_correo(
+            db, request, usuario, contrato,
+            destinatario=datos.destinatario,
+            tono=datos.tono,
+            incluir_advertencias=datos.incluir_advertencias,
+            incluir_condiciones=datos.incluir_condiciones,
+        )
+    except ErrorNegociacion as error:
+        raise HTTPException(status.HTTP_422_UNPROCESSABLE_CONTENT, str(error))
+    except ErrorLLM as error:
+        db.rollback()
+        raise HTTPException(status.HTTP_502_BAD_GATEWAY, str(error))
+    return _correo_salida(correo, db.get(CatalogoDetalle, correo.id_tono))
+
+
+@router.get("/{id_contrato}/reporte")
+def descargar_reporte(id_contrato: int, request: Request, db: DbSession, usuario: UsuarioActual):
+    """Genera y descarga el informe PDF con el análisis y las contrapropuestas."""
+    contrato = _obtener_propio(db, id_contrato, usuario)[0]
+    try:
+        reporte = generar_reporte(db, request, usuario, contrato)
+    except ErrorNegociacion as error:
+        raise HTTPException(status.HTTP_422_UNPROCESSABLE_CONTENT, str(error))
+    return FileResponse(reporte.ruta_archivo, media_type="application/pdf", filename=reporte.nombre_archivo)

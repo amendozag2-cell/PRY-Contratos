@@ -272,3 +272,52 @@ class Condicion(ColumnasControl, Base):
     numero_orden: Mapped[int] = mapped_column(SmallInteger)
     descripcion: Mapped[str] = mapped_column(String(500))
     explicacion: Mapped[str | None] = mapped_column(Text)
+
+    
+
+class Contrapropuesta(ColumnasControl, Base):
+    """Redacción alternativa de una cláusula riesgosa y su resultado en la negociación."""
+
+    __tablename__ = "con_contrapropuesta"
+
+    id_contrapropuesta: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id_clausula: Mapped[int] = mapped_column(
+        ForeignKey("con_clausula.id_clausula", ondelete="CASCADE"), unique=True
+    )
+    id_estado_contrapropuesta: Mapped[int] = mapped_column(
+        ForeignKey("cat_catalogo_detalle.id_catalogo_detalle")
+    )
+    texto_propuesto: Mapped[str] = mapped_column(Text)
+    texto_acordado: Mapped[str | None] = mapped_column(Text)
+    justificacion: Mapped[str | None] = mapped_column(Text)
+    modelo_llm: Mapped[str] = mapped_column(String(60))
+
+
+class CorreoNegociacion(ColumnasControl, Base):
+    """Correo redactado para pedir a la otra parte los cambios del contrato."""
+
+    __tablename__ = "con_correo_negociacion"
+
+    id_correo: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id_contrato: Mapped[int] = mapped_column(
+        ForeignKey("con_contrato.id_contrato", ondelete="CASCADE"), index=True
+    )
+    id_tono: Mapped[int] = mapped_column(ForeignKey("cat_catalogo_detalle.id_catalogo_detalle"))
+    destinatario: Mapped[str | None] = mapped_column(String(150))
+    asunto: Mapped[str] = mapped_column(String(255))
+    cuerpo: Mapped[str] = mapped_column(Text)
+    modelo_llm: Mapped[str] = mapped_column(String(60))
+
+
+class Reporte(ColumnasControl, Base):
+    """Informe PDF generado de un contrato."""
+
+    __tablename__ = "con_reporte"
+
+    id_reporte: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id_contrato: Mapped[int] = mapped_column(
+        ForeignKey("con_contrato.id_contrato", ondelete="CASCADE"), index=True
+    )
+    nombre_archivo: Mapped[str] = mapped_column(String(255))
+    ruta_archivo: Mapped[str] = mapped_column(String(500))
+    hash_archivo: Mapped[str] = mapped_column(CHAR(64))

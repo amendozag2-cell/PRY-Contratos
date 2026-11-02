@@ -8,6 +8,7 @@ from app.config import settings
 from app.constantes import (
     ACC_CREACION_DOCUMENTO_RAG,
     ACC_INACTIVACION_DOCUMENTO_RAG,
+    ACC_REACTIVACION_DOCUMENTO_RAG,
     CAT_TIPO_FUENTE,
     FALLO,
 )
@@ -28,6 +29,7 @@ from app.services.corpus import (
     ErrorCorpus,
     buscar_fragmentos,
     inactivar_documento,
+    reactivar_documento,
     registrar_documento,
 )
 from app.services.embeddings import ErrorEmbeddings
@@ -190,7 +192,28 @@ def inactivar(id_documento: int, request: Request, db: DbSession, administrador:
     fragmentos = db.scalar(select(conteo.c.total).where(conteo.c.id_documento == id_documento)) or 0
     return _salida(documento, db.get(CatalogoDetalle, documento.id_tipo_fuente), fragmentos)
 
+@router.patch("/{id_documento}/reactivar", response_model=DocumentoRagSalida)
+def reactivar(id_documento: int, request: Request, db: DbSession, administrador: Administrador):
+    documento = db.get(DocumentoRag, id_documento)
+    if documento is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Documento no encontrado")
+    if documento.estado == ESTADO_ACTIVO:
+        raise HTTPException(status.HTTP_409_CONFLICT, "El documento ya está activo")
 
+    reactivar_documento(db, documento, administrador)
+    registrar_evento(
+        db, request, ACC_REACTIVACION_DOCUMENTO_RAG,
+        usuario=administrador,
+        tabla_afectada="rag_documento",
+        id_registro=documento.id_documento,
+        datos_anteriores={"estado": "I"},
+        datos_nuevos={"estado": "A", "titulo": documento.titulo},
+    )
+    db.commit()
+
+    conteo = _conteo_fragmentos()
+    fragmentos = db.scalar(select(conteo.c.total).where(conteo.c.id_documento == id_documento)) or 0
+    return _salida(documento, db.get(CatalogoDetalle, documento.id_tipo_fuente), fragmentos)
 @router.post("/buscar", response_model=BusquedaSalida)
 def buscar(datos: BusquedaEntrada, db: DbSession, _: Administrador):
     """Prueba de recuperación semántica: devuelve las normas más parecidas al texto."""

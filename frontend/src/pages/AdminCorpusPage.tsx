@@ -7,6 +7,7 @@ import type {
   PaginaFragmentos,
   ResultadoBusqueda,
 } from "../types";
+import ModalConfirmacion from "../components/ModalConfirmacion";
 
 const input =
   "w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none";
@@ -25,6 +26,10 @@ export default function AdminCorpusPage() {
   const [archivo, setArchivo] = useState<File | null>(null);
   const [claveArchivo, setClaveArchivo] = useState(0);
   const [subiendo, setSubiendo] = useState(false);
+
+    // Confirmación para inactivar
+  const [porInactivar, setPorInactivar] = useState<DocumentoRag | null>(null);
+  const [inactivando, setInactivando] = useState(false);
 
   // Vista de fragmentos
   const [docSeleccionado, setDocSeleccionado] = useState<DocumentoRag | null>(null);
@@ -89,13 +94,32 @@ export default function AdminCorpusPage() {
     }
   }
 
-  async function inactivar(doc: DocumentoRag) {
-    if (!window.confirm(`¿Inactivar "${doc.titulo}"? Sus fragmentos dejarán de usarse en el análisis.`)) return;
+    function inactivar(doc: DocumentoRag) {
+    setPorInactivar(doc);
+  }
+
+  async function confirmarInactivar() {
+    if (!porInactivar) return;
+    const doc = porInactivar;
     setError("");
+    setInactivando(true);
     try {
       await api.patch(`/admin/corpus/${doc.id_documento}/inactivar`);
       setAviso(`"${doc.titulo}" se inactivó.`);
       if (docSeleccionado?.id_documento === doc.id_documento) setDocSeleccionado(null);
+      cargarDocumentos();
+    } catch (err) {
+      setError(getErrorMessage(err));
+    } finally {
+      setInactivando(false);
+      setPorInactivar(null);
+    }
+  }
+  async function reactivar(doc: DocumentoRag) {
+    setError("");
+    try {
+      await api.patch(`/admin/corpus/${doc.id_documento}/reactivar`);
+      setAviso(`"${doc.titulo}" se reactivó. Sus fragmentos vuelven a usarse en el análisis.`);
       cargarDocumentos();
     } catch (err) {
       setError(getErrorMessage(err));
@@ -260,10 +284,15 @@ export default function AdminCorpusPage() {
                         className="rounded-lg border border-slate-300 px-2 py-1 text-xs hover:bg-slate-50">
                         Ver fragmentos
                       </button>
-                      {d.estado === "A" && (
+                      {d.estado === "A" ? (
                         <button onClick={() => inactivar(d)}
                           className="ml-2 rounded-lg border border-red-200 px-2 py-1 text-xs text-red-700 hover:bg-red-50">
                           Inactivar
+                        </button>
+                      ) : (
+                        <button onClick={() => reactivar(d)}
+                          className="ml-2 rounded-lg border border-green-200 px-2 py-1 text-xs text-green-700 hover:bg-green-50">
+                          Reactivar
                         </button>
                       )}
                     </td>
@@ -304,6 +333,17 @@ export default function AdminCorpusPage() {
           </section>
         )}
       </main>
+
+      <ModalConfirmacion
+        abierto={porInactivar !== null}
+        tono="peligro"
+        titulo="Inactivar documento del corpus"
+        mensaje={`"${porInactivar?.titulo ?? ""}" dejará de usarse en el análisis de contratos. Podrá reactivarlo cuando quiera.`}
+        textoConfirmar="Inactivar"
+        procesando={inactivando}
+        onConfirmar={confirmarInactivar}
+        onCancelar={() => setPorInactivar(null)}
+      />
     </div>
   );
 }
