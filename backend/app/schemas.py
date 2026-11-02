@@ -59,6 +59,12 @@ class Token(BaseModel):
     token_type: str = "bearer"
 
 
+# --------------------------------------------------------------- catálogos
+class OpcionCatalogo(BaseModel):
+    codigo: str
+    nombre: str
+
+
 # --------------------------------------------------------------- contratos
 class ContratoSalida(BaseModel):
     id_contrato: int
@@ -82,6 +88,25 @@ class Coordenada(BaseModel):
     y1: float
 
 
+class NivelRiesgoSalida(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    codigo: str
+    nombre: str
+    color_hex: str
+    peso: int
+
+
+class FundamentoSalida(BaseModel):
+    """Norma del corpus citada para justificar el diagnóstico."""
+
+    id_fragmento: int
+    titulo_documento: str
+    articulo_referencia: str | None
+    contenido: str
+    similitud: float
+
+
 class ClausulaSalida(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -91,11 +116,56 @@ class ClausulaSalida(BaseModel):
     contenido: str
     numero_pagina: int
     coordenadas: list[Coordenada]
+    nivel_riesgo: NivelRiesgoSalida | None = None
+    categoria_riesgo: OpcionCatalogo | None = None
+    explicacion: str | None = None
+    fundamentos: list[FundamentoSalida] = []
+
+
+class CoberturaSalida(BaseModel):
+    codigo: str
+    nombre: str
+    color_hex: str
+
+
+class CondicionSalida(BaseModel):
+    """Condición que el usuario indicó y si el contrato la recoge."""
+
+    numero_orden: int
+    descripcion: str
+    cobertura: CoberturaSalida
+    explicacion: str | None
+    id_clausula: int | None
+    numero_clausula: int | None
+    titulo_clausula: str | None
 
 
 class ContratoDetalle(ContratoSalida):
+    resumen: str | None
+    tiempo_procesamiento_ms: int | None
+    fecha_analisis: datetime | None
+    rol_parte: OpcionCatalogo | None
+    contexto_usuario: str | None
+    niveles: list[NivelRiesgoSalida]
     clausulas: list[ClausulaSalida]
+    condiciones: list[CondicionSalida]
 
+
+MAX_CONTEXTO = 4000
+
+
+class ContextoEntrada(BaseModel):
+    """Papel del usuario en el contrato y lo que dice que acordaron."""
+
+    model_config = ConfigDict(str_strip_whitespace=True)
+
+    rol_parte: str | None = None
+    contexto_usuario: str | None = Field(default=None, max_length=MAX_CONTEXTO)
+
+    @field_validator("rol_parte", "contexto_usuario", mode="before")
+    @classmethod
+    def vacio_a_nulo(cls, valor):
+        return None if isinstance(valor, str) and not valor.strip() else valor
 
 class CargaContratoSalida(BaseModel):
     contrato: ContratoSalida
@@ -104,11 +174,6 @@ class CargaContratoSalida(BaseModel):
 
 
 # ----------------------------------------------------------- administración
-class OpcionCatalogo(BaseModel):
-    codigo: str
-    nombre: str
-
-
 class AuditoriaSalida(BaseModel):
     id_auditoria: int
     correo_usuario: str | None

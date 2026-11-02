@@ -44,6 +44,24 @@ export interface Coordenada {
   y1: number;
 }
 
+export type CodigoNivel = "ALTO" | "MEDIO" | "BAJO";
+
+export interface NivelRiesgo {
+  codigo: CodigoNivel;
+  nombre: string;
+  color_hex: string;
+  peso: number;
+}
+
+/** Norma del corpus citada por el modelo para justificar el diagnóstico. */
+export interface Fundamento {
+  id_fragmento: number;
+  titulo_documento: string;
+  articulo_referencia: string | null;
+  contenido: string;
+  similitud: number;
+}
+
 export interface ClausulaContrato {
   id_clausula: number;
   numero_orden: number;
@@ -51,11 +69,39 @@ export interface ClausulaContrato {
   contenido: string;
   numero_pagina: number;
   coordenadas: Coordenada[];
+  nivel_riesgo: NivelRiesgo | null;
+  categoria_riesgo: { codigo: string; nombre: string } | null;
+  explicacion: string | null;
+  fundamentos: Fundamento[];
+}
+
+export type CodigoRolParte = "PRESTADOR" | "CONTRATANTE";
+export type CodigoCobertura = "CUBIERTA" | "PARCIAL" | "CONTRADICHA" | "AUSENTE";
+
+/** Condición que el usuario indicó y si el contrato la recoge. */
+export interface Condicion {
+  numero_orden: number;
+  descripcion: string;
+  cobertura: { codigo: CodigoCobertura; nombre: string; color_hex: string };
+  explicacion: string | null;
+  id_clausula: number | null;
+  numero_clausula: number | null;
+  titulo_clausula: string | null;
 }
 
 export interface ContratoDetalle extends Contrato {
+  resumen: string | null;
+  tiempo_procesamiento_ms: number | null;
+  fecha_analisis: string | null;
+  rol_parte: { codigo: CodigoRolParte; nombre: string } | null;
+  contexto_usuario: string | null;
+  niveles: NivelRiesgo[];
   clausulas: ClausulaContrato[];
+  condiciones: Condicion[];
 }
+
+/** Máximo de caracteres de "Lo que acordaron" (igual que en el backend). */
+export const MAX_CONTEXTO = 4000;
 
 export interface CargaContratoRespuesta {
   contrato: Contrato;

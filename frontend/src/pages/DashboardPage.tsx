@@ -18,6 +18,13 @@ const etiquetaEstado: Record<EstadoAnalisis, string> = {
   ERROR: "Error",
 };
 
+/** Color del puntaje global: 0-33 bajo, 34-66 medio, 67-100 alto. */
+function colorPuntaje(puntaje: number) {
+  if (puntaje >= 67) return "bg-red-100 text-red-700";
+  if (puntaje >= 34) return "bg-amber-100 text-amber-800";
+  return "bg-green-100 text-green-700";
+}
+
 export default function DashboardPage() {
   const { usuario, cerrarSesion } = useAuth();
   const [contratos, setContratos] = useState<Contrato[]>([]);
@@ -75,6 +82,7 @@ export default function DashboardPage() {
                     <th className="p-3 text-right">Páginas</th>
                     <th className="p-3 text-right">Cláusulas</th>
                     <th className="p-3">Estado</th>
+                    <th className="p-3 text-right">Riesgo</th>
                     <th className="p-3">Fecha</th>
                   </tr>
                 </thead>
@@ -93,6 +101,13 @@ export default function DashboardPage() {
                       <td className="p-3 text-right tabular-nums">{c.numero_paginas ?? "—"}</td>
                       <td className="p-3 text-right tabular-nums">{c.numero_clausulas}</td>
                       <td className="p-3">{etiquetaEstado[c.estado_analisis] ?? c.estado_analisis}</td>
+                      <td className="p-3 text-right tabular-nums">
+                        {c.puntaje_riesgo_global !== null ? (
+                          <span className={`rounded px-2 py-0.5 font-medium ${colorPuntaje(Number(c.puntaje_riesgo_global))}`}>
+                            {Number(c.puntaje_riesgo_global).toFixed(0)}
+                          </span>
+                        ) : "—"}
+                      </td>
                       <td className="p-3 tabular-nums">{new Date(c.fecha_creacion).toLocaleDateString("es-EC")}</td>
                     </tr>
                   ))}

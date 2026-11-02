@@ -49,6 +49,8 @@ def cargar_contrato(
     contenido: bytes,
     nombre_archivo: str,
     id_tipo_contrato: int | None,
+    id_rol_parte: int | None = None,
+    contexto_usuario: str | None = None,
 ) -> ResultadoCargaContrato:
     inicio = time.perf_counter()
     hash_archivo = hashlib.sha256(contenido).hexdigest()
@@ -78,6 +80,8 @@ def cargar_contrato(
         contrato = Contrato(
             id_usuario=usuario.id_usuario,
             id_tipo_contrato=id_tipo_contrato,
+            id_rol_parte=id_rol_parte,
+            contexto_usuario=contexto_usuario,
             id_estado_analisis=obtener_id_detalle(db, CAT_ESTADO_ANALISIS, EST_CARGADO),
             nombre_archivo=nombre_archivo[:255],
             ruta_archivo=ruta.as_posix(),
@@ -113,6 +117,7 @@ def cargar_contrato(
                 "paginas": lectura.numero_paginas,
                 "paginas_ocr": len(lectura.paginas_ocr),
                 "clausulas": len(clausulas),
+                "con_contexto": bool(contexto_usuario),
                 "tiempo_ms": milisegundos,
             },
         )
@@ -129,6 +134,14 @@ def cargar_contrato(
         paginas_ocr=lectura.paginas_ocr,
         milisegundos=milisegundos,
     )
+
+
+def actualizar_contexto(contrato: Contrato, usuario: Usuario,
+                        id_rol_parte: int | None, contexto_usuario: str | None) -> None:
+    contrato.id_rol_parte = id_rol_parte
+    contrato.contexto_usuario = contexto_usuario
+    contrato.usuario_modificacion = usuario.id_usuario
+    contrato.fecha_modificacion = datetime.now(timezone.utc)
 
 
 def inactivar_contrato(contrato: Contrato, usuario: Usuario) -> None:

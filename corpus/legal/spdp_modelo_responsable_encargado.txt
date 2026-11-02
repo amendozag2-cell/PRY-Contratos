@@ -1,0 +1,113 @@
+Modelo de cláusula entre responsable y encargado de tratamiento
+“CLÁUSULA _________.- Tratamiento de Datos Personales entre Responsable y
+Encargado del tratamiento:
+Para el presente contrato se considerará a [nombre de la persona natural o jurídica] como
+responsable del tratamiento de datos personales y, a [nombre de la persona natural o jurídica]
+como encargado del tratamiento de datos personales. La presente cláusula no exime a las partes
+de suscribir un contrato de encargo de tratamiento de acuerdo con la Ley Orgánica de Protección
+de Datos Personales.
+x.1. Finalidad del Tratamiento
+El encargado del tratamiento se compromete a tratar los datos personales de conformidad con
+las finalidades previstas en [especificar el número de cláusula donde se identifica el objeto del
+contrato], siendo estas:
+• [Enumerar las finalidades del tratamiento, como prestación de servicios, envío de
+comunicaciones, procesamiento de pagos, etc.]
+El encargado del tratamiento solo podrá tratar los datos personales para las finalidades
+mencionadas y no podrá utilizarlos para fines distintos a los expresamente autorizados por el
+responsable.
+x.2. Responsabilidad del Responsable
+El responsable del tratamiento declara y garantiza que los datos personales proporcionados al
+encargado de tratamiento han sido recabados de manera lícita y legítima de acuerdo con la
+normativa de datos personales vigente y, cuentan con el consentimiento del titular de los datos,
+cuando así lo exija la normativa. El responsable es el único que responderá ante los titulares de
+los datos por el cumplimiento de la ley y los derechos de estos.
+Sus obligaciones de específicas se detallan conforme a la normativa vigente en el contrato de
+encargo de tratamiento.
+x.3. Obligaciones del encargado de tratamiento
+Las obligaciones específicas del encargado del tratamiento se detallan específicamente en el
+Contrato de encargo de tratamiento de acuerdo con la Ley Orgánica de Protección de Datos
+Personales y demás artículos correspondientes de su Reglamento.
+Sin embargo, se recalcan las siguientes obligaciones en relación con tratamiento de los datos
+personales:
+• Tratar los datos personales únicamente conforme a las instrucciones del responsable del
+tratamiento y dentro del marco de la finalidad establecida en el presente Contrato.
+• Adoptar las medidas físicas, técnicas, legales, administrativas y organizativas
+necesarias para garantizar la seguridad de los datos personales y protegerlos en su
+integridad, disponibilidad y confidencialidad.
+• No transferir los datos personales a terceros, salvo que se cuente con la autorización
+previa y escrita del responsable o en caso de que lo exija la ley.
+Informar de inmediato al responsable en caso de que se detecte alguna vulneración de
+seguridad que pueda comprometer los datos personales, a más tardar en el término de
+dos (2) días término desde que tuvo conocimiento de la vulneración de seguridad.
+• Notificar e informar al responsable del tratamiento en el término de dos (2) días sobre
+la solicitud de atención a derechos de protección de datos personales, así como la
+información pertinente a fin de garantizar la respuesta dentro del término establecido
+en la Ley.
+• Permitir y contribuir con las auditorías o inspecciones que el responsable considere
+necesarias para garantizar el cumplimiento de las obligaciones en materia de protección
+de datos. [Se podrá incluir intervalos razonables para la ejecución de auditorías en caso
+de considerarlo necesario].
+En caso de que el encargado de tratamiento destine los datos personales para otras finalidades
+de tratamiento determinando este los fines y medios, se considerará, responsable del tratamiento
+en lo que respecta a dicho tratamiento.
+x.4. Subcontratación del Tratamiento
+El encargado del tratamiento no podrá subcontratar el tratamiento de los datos personales sin la
+autorización previa y por escrito del responsable del tratamiento. En caso de subcontratación, el
+encargado del tratamiento se compromete a asegurar que el subcontratista cumpla con las
+mismas obligaciones de protección de datos que tiene con el responsable del tratamiento,
+estableciendo un acuerdo que regule dicha subcontratación.
+En caso de realizar subcontratación, el tercero asumirá las mismas obligaciones establecidas
+para el encargado de tratamiento establecidas en el contrato de encargo y las contempladas en
+la normativa de protección de datos personales vigente, es así que el
+subcontratado/subencargado de tratamiento deberá cumplir con las instrucciones de tratamiento
+de datos dadas por el responsable y encargado del tratamiento.
+En caso de que el subencargado de tratamiento sufra una vulneración de seguridad a los datos
+personales, el encargado de tratamiento seguirá siendo plenamente responsable de la misma
+frente al responsable de tratamiento debiendo cumplir con la notificación de la vulneración
+dentro del término de dos (2) días al responsable.
+x.5. Derecho de Repetición Contra el Encargado
+Las partes reconocen que, conforme con lo establecido en la normativa aplicable en materia de
+protección de datos personales, el responsable del tratamiento asume la responsabilidad frente
+al titular de los datos por cualquier daño que se derive del tratamiento ilícito de los datos
+personales.
+No obstante, cuando el incumplimiento de las obligaciones legales, contractuales o técnicas en
+materia de protección de datos sea atribuible al encargado del tratamiento, este deberá asumir
+la responsabilidad por los daños y perjuicios causados y mantener indemne al responsable por
+cualquier reclamación, sanción, multa, daño o gasto que se derive directa o indirectamente de
+dicho incumplimiento.
+Asimismo, se acuerda expresamente que el responsable de tratamiento tendrá derecho a repetir
+contra el encargado de tratamiento por los importes que haya debido asumir frente a terceros
+(incluidos titulares, autoridades o tribunales) como consecuencia de actuaciones u omisiones
+imputables al encargado de tratamiento.
+Ambas partes se comprometen a delimitar claramente sus respectivas obligaciones y
+responsabilidades mediante el correspondiente contrato de encargo del tratamiento. 
+x.6. Derechos de los Titulares de los Datos
+El encargado de tratamiento se compromete a cooperar con el responsable de tratamiento para
+garantizar que los titulares de los datos puedan ejercer sus derechos. El encargado de tratamiento
+notificará al responsable del tratamiento cualquier solicitud que reciba directamente del titular
+de los datos, y deberá prestar su apoyo en el cumplimiento efectivo de la solicitud dentro del
+plazo de quince (15) días establecido en la Ley Orgánica de Protección de Datos Personales.
+x.7. Devolución o Eliminación de los Datos
+Al finalizar el tratamiento de los datos personales, el encargado del tratamiento deberá devolver
+todos los datos personales al responsable del tratamiento tanto los que ha tenido acceso para
+realizar el tratamiento como los que surjan como resultado del procesamiento de los mismos o,
+si así lo solicita este último, la eliminación segura de todos los datos personales tratados, de
+acuerdo con lo establecido en la normativa de protección de datos.
+De manera excepcional el encargado de tratamiento podrá conservar los datos personales
+tratados con la finalidad de dar cumplimiento a una obligación legal, datos los cuales deberán
+mantenerse alojados en una base de datos distinta a la inicial y deberán estar bloqueados con
+todas las medidas de seguridad necesarias que garanticen la integridad, disponibilidad y
+confidencialidad de la información.
+x.8. Plazo de Conservación
+El encargado de tratamiento solo podrá conservar los datos personales durante el tiempo
+estrictamente necesario para cumplir con las finalidades del tratamiento y conforme a las
+instrucciones del responsable.
+x.9. Confidencialidad
+El encargado del tratamiento se compromete a mantener la confidencialidad sobre los datos
+personales tratados y a no divulgarlos a terceros sin la autorización expresa y por escrito del
+responsable del tratamiento, salvo que sea requerido por una obligación legal o por orden
+judicial. En este sentido, el encargado del tratamiento se compromete y garantiza que cuenta
+con convenios de confidencialidad o cláusulas de confidencialidad con todo su personal
+especialmente con quienes tienen acceso o que llegaren a conocer sobre los datos personales
+objeto de tratamiento. Asimismo, declara que cuenta con todas las medidas de seguridad
+necesarias para garantizar la seguridad de la información.”

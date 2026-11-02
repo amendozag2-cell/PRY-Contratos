@@ -136,6 +136,10 @@ class Contrato(ColumnasControl, Base):
     resumen: Mapped[str | None] = mapped_column(Text)
     tiempo_procesamiento_ms: Mapped[int | None] = mapped_column(Integer)
     fecha_analisis: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    id_rol_parte: Mapped[int | None] = mapped_column(
+        ForeignKey("cat_catalogo_detalle.id_catalogo_detalle")
+    )
+    contexto_usuario: Mapped[str | None] = mapped_column(Text)
 
 
 # ------------------------------------------------------------------ auditoría
@@ -233,4 +237,38 @@ class Clausula(ColumnasControl, Base):
     numero_pagina: Mapped[int] = mapped_column(SmallInteger)
     coordenadas: Mapped[list[dict]] = mapped_column(JSONB)
     embedding: Mapped[list[float] | None] = mapped_column(Vector(DIMENSION_EMBEDDING))
+    explicacion: Mapped[str | None] = mapped_column(Text)
+
+class ClausulaFundamento(ColumnasControl, Base):
+    """Norma del corpus que el LLM citó para justificar el diagnóstico de una cláusula."""
+
+    __tablename__ = "con_clausula_fundamento"
+
+    id_clausula: Mapped[int] = mapped_column(
+        ForeignKey("con_clausula.id_clausula", ondelete="CASCADE"), primary_key=True
+    )
+    id_fragmento: Mapped[int] = mapped_column(
+        ForeignKey("rag_fragmento.id_fragmento", ondelete="CASCADE"), primary_key=True
+    )
+    similitud: Mapped[Decimal] = mapped_column(Numeric(5, 4))
+
+
+class Condicion(ColumnasControl, Base):
+    """Condición que el usuario dice haber acordado y si el contrato la recoge."""
+
+    __tablename__ = "con_condicion"
+    __table_args__ = (UniqueConstraint("id_contrato", "numero_orden"),)
+
+    id_condicion: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id_contrato: Mapped[int] = mapped_column(
+        ForeignKey("con_contrato.id_contrato", ondelete="CASCADE")
+    )
+    id_cobertura: Mapped[int] = mapped_column(
+        ForeignKey("cat_catalogo_detalle.id_catalogo_detalle")
+    )
+    id_clausula: Mapped[int | None] = mapped_column(
+        ForeignKey("con_clausula.id_clausula", ondelete="SET NULL"), index=True
+    )
+    numero_orden: Mapped[int] = mapped_column(SmallInteger)
+    descripcion: Mapped[str] = mapped_column(String(500))
     explicacion: Mapped[str | None] = mapped_column(Text)

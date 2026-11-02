@@ -16,3 +16,9 @@ def obtener_entero(db: Session, codigo: str, por_defecto: int) -> int:
         return int(obtener_parametro(db, codigo))
     except (TypeError, ValueError):
         return por_defecto
+
+def obtener_decimal(db: Session, codigo: str, por_defecto: float) -> float:
+    try:
+        return float(obtener_parametro(db, codigo))
+    except (TypeError, ValueError):
+        return por_defecto

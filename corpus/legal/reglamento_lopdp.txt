@@ -1,0 +1,136 @@
+Art. 8.- Plazos de conservación de los datos personales.- Los plazos de conservación de los datos personales no deberán
+exceder aquéllos que sean estrictamente necesarios para el cumplimiento de las finalidades que justificaron el tratamiento.
+La Autoridad de Protección de Datos regulará los plazos de conservación de datos personales atendiendo las disposiciones
+aplicables a la materia de que se trate.
+
+Art. 9.- Eliminación, bloqueo o anonimización.- Una vez cumplida la o las finalidades del tratamiento y cuando no exista
+disposición legal o reglamentaria o no incurra la necesidad de mantener los datos en virtud del interés legítimo del
+responsable, o por cumplimiento de una obligación legal que establezca lo contrario, el responsable deberá proceder a la
+eliminación, bloqueo o anonimización de los datos en su posesión.
+El responsable establecerá procedimientos para la conservación, revisión periódica, eliminación de los datos personales.
+
+Art. 11.- Eliminación de datos.- Finalizado el plazo de conservación de los datos, el responsable del tratamiento de datos
+deberá proceder a la eliminación segura de los mismos.
+La eliminación de datos personales no aplicará cuando el tratamiento sea necesario en los siguientes supuestos:
+1. Por razones de interés público en el ámbito de la salud pública y privada, así como en materia estatal, seguridad, laboral
+y educación:
+2. Para la formulación, el ejercicio o la defensa de reclamaciones.
+La Autoridad de Protección de Datos Personales podrá requerir información cuando lo considere necesario. Para el efecto,
+ajustará los requerimientos a normas, lineamientos sobre plazo de conservación y estándares internacionales sobre la
+eliminación de datos.
+
+Art. 24.- De la notificación de vulneración de seguridad.- De conformidad con lo dispuesto en la Ley, el responsable del
+tratamiento deberá notificar a la Autoridad de Protección de Datos Personales y a la Agencia de Regulación y Control de
+Telecomunicaciones cualquier vulneración a la seguridad de los datos personales, siempre que sea probable que dicha
+violación de la seguridad constituya un riesgo para los derechos y las libertades de las personas naturales.
+Se entiende que la vulneración o violación a la seguridad constituye un riesgo para los derechos y las libertades de las
+personas naturales cuando concurre cualquiera de las siguientes causales:
+1. Cuando los datos fueron destruidos, ya no existen o no están disponibles de una forma que sea de utilidad para el
+responsable del tratamiento;
+2. Cuando los datos personales han sido alterados, corrompidos o dejan de estar completos;
+3. Cuando el responsable del tratamiento ha perdido el control o el acceso a los datos, o ya no obran en su poder; o,
+4. Cuando el tratamiento no ha sido autorizado o es ilícito, lo cual incluye la divulgación de datos personales o el acceso por
+parte de destinatarios que no están autorizados a recibir o acceder a los datos o cualquier otra forma de tratamiento que se
+ejecuta contrariando las disposiciones de la Ley.
+
+Art. 26.- Contenido de la notificación.- La notificación de vulneración de seguridad deberá contener lo siguiente:
+1. La naturaleza y tipo de vulneración;
+2. Identificar los titulares o interesados afectados;
+3. El detalle inicial de los sistemas vulnerados;
+4. La causa presunta de la vulneración:
+5. El volumen y tipos de datos expuestos o comprometidos;
+6. Las medidas adoptadas y previstas para responder y remediar la vulneración con la finalidad de mitigar las
+consecuencias presuntas;
+7. La evaluación del riesgo que la vulneración implica para los derechos y libertades de los titulares; y,
+8. Otros aspectos determinados por la Autoridad de Protección de Datos Personales.
+
+Art. 27.- Notificación de vulneración de seguridad por parte del encargado.- El encargado deberá notificar al responsable
+del tratamiento de datos personales la vulneración de la seguridad de datos personales.
+La notificación de vulneración de seguridad deberá contener la misma información detallada en el artículo precedente, a
+excepción de la evaluación del riesgo.
+
+Art. 40.- Encargado.- El encargado del tratamiento deberá ofrecer garantías suficientes para aplicar medidas técnicas,
+jurídicas, administrativas y organizativas apropiadas para que el tratamiento cumpla con las disposiciones de la Ley
+garantizando el adecuado tratamiento de los datos personales y la protección de los derechos de los titulares.
+
+Art. 41.- De la relación entre responsable y encargado.- La relación entre el responsable del tratamiento y un encargado
+debe regirse por un contrato escrito, en el cual se detallen las instrucciones encomendadas respecto del tratamiento de
+datos personales y, al menos, los siguientes aspectos:
+1. El objeto;
+2. La duración:
+3. La naturaleza;
+4. La finalidad del tratamiento de los datos;
+5. La categoría de los datos personales;
+6. Identificar a los titulares de los datos personales tratados; y,
+7. Las obligaciones y responsabilidades del encargado.
+El encargado del tratamiento deberá respetar las instrucciones que, para el efecto, determine el responsable en cuanto al
+tratamiento de los datos personales. Para ello, deberá establecer las medidas técnicas y organizativas adecuadas, previo a
+brindar el servicio, que deberán ser equiparables a aquellas a las que está obligado el responsable en función de los datos
+y los tipos de tratamiento aplicables, de tal forma que se garantice la protección de datos de los titulares.
+
+Art. 42.- Obligación del responsable.- El responsable del tratamiento de datos personales será el directo obligado de
+garantizar el correcto ejercicio de los derechos reconocidos en la Ley a los titulares, sin embargo, el encargado deberá
+asistir al responsable y realizar todas las acciones necesarias, y bajo su responsabilidad, para que el responsable pueda
+cumplir con esta obligación.
+
+Art. 43.- Responsabilidad del encargado.- El encargado del tratamiento que, por cualquier causa, determine los fines y los
+medios del tratamiento, se considerará, para efectos de la Ley, responsable del tratamiento en lo que respecta a dicho
+tratamiento. En tal sentido, para que el encargado sea considerado como tal, debe actuar a nombre y por cuenta del
+responsable y conforme a las instrucciones documentadas. Si el encargado considera que una instrucción es ilegal,
+informará al responsable del tratamiento, sin demora injustificada, para que se corrija la instrucción, de ser pertinente.
+
+Art. 44.- Registro de actividades del tratamiento.- El encargado del tratamiento deberá mantener un registro de actividades
+del tratamiento cuando el responsable del tratamiento esté obligado a ello, de conformidad con lo previsto en la Ley, el
+presente Reglamento y demás normativa aplicable.
+
+Art. 45.- Contratación.- El encargado del tratamiento podrá contratar a un tercero para complementar la prestación de un
+servicio al responsable del tratamiento de datos personales, siempre que esto se haga constar expresamente en el contrato
+celebrado entre el responsable y el encargado del tratamiento. Caso contrario, requerirá la autorización escrita del
+responsable del tratamiento para la subcontratación.
+En este caso, el tercero contratado asumirá las obligaciones del encargado de tratamiento establecidas en la ley y en el
+presente Reglamento, debiendo cumplir con las instrucciones de tratamiento de datos establecidas entre el responsable y
+encargado del tratamiento, en aquello que fuere pertinente en función de los servicios que han sido contratados.
+
+Art. 46.- Eliminación de datos personales.- El encargado deberá devolver o eliminar todos los datos personales, según las
+instrucciones impartidas por el responsable del tratamiento, una vez finalizada la relación que justifica el tratamiento de
+datos personales, destruyendo todas las copias existentes, salvo que exista la obligación de conservar los datos en virtud
+de una disposición legal.
+
+Art. 59.- Medidas de protección de datos desde el diseño.- El responsable del tratamiento tiene la obligación de establecer
+medidas técnicas y organizativas adecuadas para aplicar los principios establecidos en la normativa de forma eficaz, y
+proteger los derechos de los titulares, de manera previa al tratamiento de datos personales.
+Para la fijación de estas medidas debe tenerse en cuenta:
+1. La naturaleza, ámbito y finalidad del tratamiento;
+2. Los riesgos de diversa probabilidad y gravedad asociados al tratamiento;
+3. El estado de la técnica; y,
+4. El coste de aplicación.
+
+Art. 60.- Medidas de protección de datos por defecto.- El responsable del tratamiento adoptará las medidas técnicas y
+organizativas apropiadas para garantizar que, mediante ajustes, por defecto, solo puedan tratarse aquellos datos
+personales cuyo tratamiento sea necesario para la respectiva finalidad específica del tratamiento.
+Además, mediante los respectivos ajustes, las medidas deben garantizar que, por defecto, los datos no puedan ser
+accesibles a un número indefinido de personas de forma automatizada.
+Esta obligación es aplicable a:
+1. La cantidad de los datos recopilados;
+2. La extensión del tratamiento;
+3. El período de almacenamiento; y,
+4. La accesibilidad
+Para acreditar el cumplimiento de esta medida, podrá utilizarse un mecanismo de certificación, según lo previsto en la Ley
+Orgánica de Protección de Datos Personales.
+
+Art. 74.- Transferencia o comunicación internacional mediante garantías adecuadas.- De conformidad con la Ley, los
+instrumentos jurídicos que sustentan la transferencia internacional de datos personales a un país, organización o territorio
+económico internacional que no haya sido calificado por la Autoridad de Protección de Datos de tener un nivel adecuado de
+protección serán los siguientes:
+1. Instrumentos jurídicamente vinculantes y exigibles entre las autoridades u organismos públicos;
+2. Normas corporativas vinculantes aprobadas por la Autoridad de Protección de Datos;
+3. Cláusulas tipo de protección de datos adoptadas por organismos internacionales de protección de datos avaladas por la
+autoridad de control;
+4. Códigos de conducta, que incluyan compromisos vinculantes del responsable o el encargado del tratamiento en el tercer
+país, organización o territorio económico internacional de aplicar garantías adecuadas, que incluya las relativas a los
+derechos de los interesados;
+5. Mecanismos de certificación que incluyen sellos y marcas de protección, que incorporen compromisos vinculantes del
+responsable o el encargado del tratamiento en el tercer país, organización o territorio económico internacional de aplicar
+garantías adecuadas, así como aquellos relativos a los derechos de los interesados; y,
+6. Cláusulas contractuales que no correspondan a las cláusulas tipo y que estén debidamente autorizadas por la autoridad
+de protección de datos

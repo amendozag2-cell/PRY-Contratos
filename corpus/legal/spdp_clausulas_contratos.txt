@@ -1,0 +1,63 @@
+Art. 1.- Este reglamento tiene por objeto establecer la obligatoriedad de incorporar cláusulas de
+protección de datos personales en las relaciones jurídico-contractuales que se generaren entre los
+diferentes actores del sistema, para así cumplir la LOPDP.
+Las cláusulas de protección de datos personales establecen el respeto al cumplimiento de los
+principios establecidos en la normativa de protección de datos vigente y a los derechos de los titulares
+de los datos, de conformidad con las disposiciones legales aplicables. En este sentido, la obligación
+de incorporar cláusulas de protección de datos personales forma parte del sistema de gestión de
+cumplimiento y análisis de riesgos, como soporte documental y medida de seguridad jurídica.
+
+Art. 2.- El reglamento es de cumplimiento obligatorio. No obstante, su Anexo I tiene un carácter
+meramente referencial o ejemplificativo, aplicable a los integrantes del sistema de protección de
+datos personales establecidos en el artículo 5 de la LOPDP.
+
+Art. 3.- Para los efectos de este reglamento, se entenderán como cláusulas de protección de datos
+personales a los textos contractuales sugeridos, no obligatorios —que no corresponden a las
+cláusulas tipo, estándar o modelo—, que sirven para estandarizar el contenido mínimo que deben
+tener las cláusulas en aquellos contratos que conlleven el procesamiento de datos personales, para 
+garantizar el cumplimiento de la normativa de protección de datos, promover buenas prácticas y
+asegurar los derechos de los titulares de datos personales.
+
+Art. 4.- Una cláusula de protección de datos personales no podrá caracterizarse, bajo ninguna
+consideración, por cualquiera de los siguientes defectos:
+4.1. Ambigüedad o vaguedad: La cláusula de protección de datos personales, en cualquiera
+de los contratos que se incluyere y sin importar quiénes fueren las partes, debe ser clara
+y específica en cuanto al tratamiento de los datos, la finalidad y los derechos de los
+titulares. En consecuencia, no debe prestarse, bajo ningún respecto, para dudas o
+interpretaciones indeterminadas, vagas o confusas.
+4.2. Finalidades no legítimas: La cláusula no debe permitir ni describir el tratamiento de los
+datos para fines que no fueren legítimos, lícitos, específicos y explícitos, conforme a la
+legislación de protección de datos.
+4.3. Falta de bases de legitimación: En ningún caso se podrá establecer o estipular una
+cláusula que busque realizar tratamientos de datos personales que no cuenten con una
+base de legitimación, de acuerdo con lo establecido en la LOPDP.
+4.4. Falta de transparencia: Una cláusula de protección de datos no debe omitir información
+importante, tales como la identidad del responsable del tratamiento o la del encargado del
+tratamiento, los derechos del titular de los datos, las finalidades de tratamiento, entre otras
+informaciones necesarias.
+4.5. Omisión de la responsabilidad en la implementación de medidas de seguridad: La
+cláusula de protección de datos no debe excluir la responsabilidad que tienen las partes
+suscriptoras del contrato de contar con medidas de seguridad que deben implementarse
+para proteger los datos personales del acceso no autorizado o el tratamiento indebido.
+4.6. Excesos en la recopilación de datos: La cláusula no debe permitir que se recaben o
+recojan datos en forma indiscriminada o que se traten más datos que los estrictamente
+necesarios para cumplir con la finalidad del tratamiento.
+4.7. No respetar derechos de los titulares: La cláusula no debe impedir o limitar de manera
+indebida, por acción u omisión, los derechos de los titulares de los datos ni su cabal
+ejercicio.
+4.8. Condiciones de transferencia o comunicación de datos sin control: La cláusula de
+protección de datos no debe permitir la transferencia o comunicación de los datos a
+terceros sin garantías adecuadas o sin informar previa, debida, suficiente y
+fehacientemente al titular de los datos.
+4.9. Exenciones excesivas de responsabilidad: La cláusula de protección de datos no debe
+eximir ni liberar ni al responsable ni al encargado del tratamiento de las obligaciones
+establecidas en la normativa de protección de datos personales vigente.
+4.10. Falta de plazo de conservación de los datos: La cláusula no debe omitir información
+sobre el período de retención de los datos personales, el cual debe ser limitado al tiempo
+necesario para cumplir con la finalidad del tratamiento.
+4.11. Restricciones de derechos, tratamientos ilícitos y omisiones esenciales: Una cláusula
+de protección de datos no debe contener disposiciones que vulneren, restrinjan, limiten o
+soslayen los derechos de los titulares de datos personales ni que permitan el tratamiento
+ilegítimo, ilícito o que omitan detalles esenciales sobre el manejo de los datos.
+4.12. Otros: Los demás que estableciere la normativa en protección de datos personales
+vigente.
