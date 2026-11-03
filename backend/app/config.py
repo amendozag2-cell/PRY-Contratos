@@ -14,6 +14,9 @@ class Settings(BaseSettings):
     directorio_archivos: str = "storage"
     max_mb_corpus: int = 20
     max_mb_contrato: int = 10
+    # Firma electrónica: certificados raíz de las entidades de certificación (relativa a backend/)
+    directorio_confianza: str = "certificados_confianza"
+    max_kb_certificado: int = 100
     # OCR (Tesseract): carpeta tessdata con el idioma español instalado
     tessdata_prefix: str = ""
     idioma_ocr: str = "spa"

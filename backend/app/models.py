@@ -272,3 +272,102 @@ class Condicion(ColumnasControl, Base):
     numero_orden: Mapped[int] = mapped_column(SmallInteger)
     descripcion: Mapped[str] = mapped_column(String(500))
     explicacion: Mapped[str | None] = mapped_column(Text)
+
+    
+
+class Contrapropuesta(ColumnasControl, Base):
+    """Redacción alternativa de una cláusula riesgosa y su resultado en la negociación."""
+
+    __tablename__ = "con_contrapropuesta"
+
+    id_contrapropuesta: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id_clausula: Mapped[int] = mapped_column(
+        ForeignKey("con_clausula.id_clausula", ondelete="CASCADE"), unique=True
+    )
+    id_estado_contrapropuesta: Mapped[int] = mapped_column(
+        ForeignKey("cat_catalogo_detalle.id_catalogo_detalle")
+    )
+    texto_propuesto: Mapped[str] = mapped_column(Text)
+    texto_acordado: Mapped[str | None] = mapped_column(Text)
+    justificacion: Mapped[str | None] = mapped_column(Text)
+    modelo_llm: Mapped[str] = mapped_column(String(60))
+
+
+class CorreoNegociacion(ColumnasControl, Base):
+    """Correo redactado para pedir a la otra parte los cambios del contrato."""
+
+    __tablename__ = "con_correo_negociacion"
+
+    id_correo: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id_contrato: Mapped[int] = mapped_column(
+        ForeignKey("con_contrato.id_contrato", ondelete="CASCADE"), index=True
+    )
+    id_tono: Mapped[int] = mapped_column(ForeignKey("cat_catalogo_detalle.id_catalogo_detalle"))
+    destinatario: Mapped[str | None] = mapped_column(String(150))
+    asunto: Mapped[str] = mapped_column(String(255))
+    cuerpo: Mapped[str] = mapped_column(Text)
+    modelo_llm: Mapped[str] = mapped_column(String(60))
+
+
+class Reporte(ColumnasControl, Base):
+    """Informe PDF generado de un contrato."""
+
+    __tablename__ = "con_reporte"
+
+    id_reporte: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id_contrato: Mapped[int] = mapped_column(
+        ForeignKey("con_contrato.id_contrato", ondelete="CASCADE"), index=True
+    )
+    nombre_archivo: Mapped[str] = mapped_column(String(255))
+    ruta_archivo: Mapped[str] = mapped_column(String(500))
+    hash_archivo: Mapped[str] = mapped_column(CHAR(64))
+
+
+
+class Certificado(ColumnasControl, Base):
+    """Datos públicos de un certificado de firma. El .p12 y su clave nunca se guardan."""
+
+    __tablename__ = "seg_certificado"
+
+    id_certificado: Mapped[int] = mapped_column(Integer, primary_key=True)
+    emisor: Mapped[str] = mapped_column(String(255))
+    numero_serie: Mapped[str] = mapped_column(String(100))
+    huella_sha256: Mapped[str] = mapped_column(CHAR(64), unique=True)
+    nombre_titular: Mapped[str] = mapped_column(String(200))
+    identificacion_titular: Mapped[str | None] = mapped_column(String(20))
+    fecha_inicio_vigencia: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    fecha_fin_vigencia: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+
+
+class DocumentoFirma(ColumnasControl, Base):
+    """Versión final negociada del contrato que se firma electrónicamente."""
+
+    __tablename__ = "con_documento_firma"
+
+    id_documento_firma: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id_contrato: Mapped[int] = mapped_column(ForeignKey("con_contrato.id_contrato", ondelete="CASCADE"))
+    numero_version: Mapped[int] = mapped_column(SmallInteger)
+    nombre_archivo: Mapped[str] = mapped_column(String(255))
+    ruta_archivo: Mapped[str] = mapped_column(String(500))
+    hash_archivo: Mapped[str] = mapped_column(CHAR(64))
+    numero_firmas_requeridas: Mapped[int] = mapped_column(SmallInteger, server_default=text("2"))
+
+
+class Firma(ColumnasControl, Base):
+    """Firma PAdES contenida en el documento (hecha en la plataforma o con FirmaEC)."""
+
+    __tablename__ = "con_firma"
+
+    id_firma: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id_documento_firma: Mapped[int] = mapped_column(
+        ForeignKey("con_documento_firma.id_documento_firma", ondelete="CASCADE")
+    )
+    id_certificado: Mapped[int] = mapped_column(ForeignKey("seg_certificado.id_certificado"), index=True)
+    id_usuario: Mapped[int | None] = mapped_column(ForeignKey("seg_usuario.id_usuario"))
+    numero_orden: Mapped[int] = mapped_column(SmallInteger)
+    fecha_firma: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    hash_documento: Mapped[str] = mapped_column(CHAR(64))
+    motivo: Mapped[str | None] = mapped_column(String(255))
+    es_integra: Mapped[bool] = mapped_column()
+    es_confiable: Mapped[bool] = mapped_column(server_default=text("false"))
+    fecha_verificacion: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())

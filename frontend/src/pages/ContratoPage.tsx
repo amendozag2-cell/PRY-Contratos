@@ -1,7 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router";
 import { api, getErrorMessage } from "../api/client";
+import axios from "axios";
 import CampoContexto from "../components/CampoContexto";
+import Contrapropuesta from "../components/Contrapropuesta";
+import ModalConfirmacion from "../components/ModalConfirmacion";
+import ModalCorreo from "../components/ModalCorreo";
+import PanelFirma from "../components/PanelFirma";
 import VisorContrato from "../components/VisorContrato";
 import { COLOR_NEUTRO, conAlfa } from "../utils/colores";
 import type { ClausulaContrato, CodigoNivel, ContratoDetalle, OpcionCatalogo } from "../types";
@@ -35,6 +40,13 @@ export default function ContratoPage() {
   const [contextoEdicion, setContextoEdicion] = useState("");
   const [guardando, setGuardando] = useState(false);
   const [contextoPendiente, setContextoPendiente] = useState(false);
+    // Confirmación para quitar del historial
+  const [confirmarQuitar, setConfirmarQuitar] = useState(false);
+  const [quitando, setQuitando] = useState(false);
+    // Negociación (Avance 6)
+  const [generandoCp, setGenerandoCp] = useState(false);
+  const [correoAbierto, setCorreoAbierto] = useState(false);
+  const [descargandoInforme, setDescargandoInforme] = useState(false);
 
   useEffect(() => {
     api.get<ContratoDetalle>(`/contratos/${id}`)
@@ -68,6 +80,52 @@ export default function ContratoPage() {
       api.get<ContratoDetalle>(`/contratos/${contrato.id_contrato}`).then((r) => setContrato(r.data)).catch(() => {});
     } finally {
       setAnalizando(false);
+    }
+  }
+
+  async function generarContrapropuestas() {
+    if (!contrato) return;
+    setError("");
+    setGenerandoCp(true);
+    try {
+      const { data } = await api.post<ContratoDetalle>(`/contratos/${contrato.id_contrato}/contrapropuestas`, {});
+      setContrato(data);
+      const primera = data.clausulas.find((c) => c.contrapropuesta && c.nivel_riesgo?.codigo === "ALTO")
+        ?? data.clausulas.find((c) => c.contrapropuesta);
+      if (primera) seleccionar(primera.id_clausula);
+    } catch (e) {
+      setError(getErrorMessage(e));
+    } finally {
+      setGenerandoCp(false);
+    }
+  }
+
+  async function descargarInforme() {
+    if (!contrato) return;
+    setError("");
+    setDescargandoInforme(true);
+    try {
+      const { data } = await api.get<Blob>(`/contratos/${contrato.id_contrato}/reporte`, { responseType: "blob" });
+      const url = URL.createObjectURL(data);
+      const enlace = document.createElement("a");
+      enlace.href = url;
+      enlace.download = `Informe - ${contrato.nombre_archivo.replace(/\.pdf$/i, "")}.pdf`;
+      enlace.click();
+      URL.revokeObjectURL(url);
+    } catch (e) {
+      // Con responseType "blob" el mensaje de error del backend llega como Blob: se lee como JSON
+      if (axios.isAxiosError(e) && e.response?.data instanceof Blob) {
+        try {
+          const cuerpo = JSON.parse(await e.response.data.text());
+          setError(typeof cuerpo.detail === "string" ? cuerpo.detail : "No se pudo generar el informe");
+        } catch {
+          setError("No se pudo generar el informe");
+        }
+      } else {
+        setError(getErrorMessage(e));
+      }
+    } finally {
+      setDescargandoInforme(false);
     }
   }
 
@@ -106,12 +164,14 @@ export default function ContratoPage() {
 
   async function inactivar() {
     if (!contrato) return;
-    if (!window.confirm(`¿Quitar "${contrato.nombre_archivo}" de tu historial?`)) return;
+    setQuitando(true);
     try {
       await api.patch(`/contratos/${contrato.id_contrato}/inactivar`);
       navigate("/");
     } catch (e) {
       setError(getErrorMessage(e));
+      setQuitando(false);
+      setConfirmarQuitar(false);
     }
   }
 
@@ -132,6 +192,10 @@ export default function ContratoPage() {
   }));
   const visibles = contrato.clausulas.filter((c) => !filtro || c.nivel_riesgo?.codigo === filtro);
   const puntaje = contrato.puntaje_riesgo_global !== null ? Number(contrato.puntaje_riesgo_global) : null;
+  const riesgosas = contrato.clausulas.filter((c) => c.nivel_riesgo && c.nivel_riesgo.codigo !== "BAJO");
+  const conPropuesta = riesgosas.filter((c) => c.contrapropuesta);
+  const resueltas = conPropuesta.filter((c) => c.contrapropuesta!.estado.codigo !== "GENERADA").length;
+  const hayCondicionesPendientes = contrato.condiciones.some((k) => k.cobertura.codigo !== "CUBIERTA");
   const respaldadas = contrato.clausulas.filter((c) => c.fundamentos.length > 0).length;
 
   return (
@@ -150,14 +214,37 @@ export default function ContratoPage() {
             className="rounded-lg bg-blue-600 px-4 py-1.5 font-medium text-white hover:bg-blue-700 disabled:opacity-60">
             {analizando ? "Analizando riesgos..." : analizado ? "Volver a analizar" : "Analizar riesgos"}
           </button>
-          <button onClick={inactivar} className="rounded-lg border border-red-200 px-3 py-1 text-red-700 hover:bg-red-50">
-            Quitar del historial
+          {analizado && riesgosas.length > 0 && (
+            <button onClick={generarContrapropuestas} disabled={generandoCp || analizando}
+              title={conPropuesta.length > 0 ? "Vuelve a redactar todas las contrapropuestas (reemplaza las actuales)" : undefined}
+              className="rounded-lg border border-blue-300 px-3 py-1 text-blue-700 hover:bg-blue-50 disabled:opacity-60">
+              {generandoCp ? "Redactando contrapropuestas..." : conPropuesta.length > 0 ? "Regenerar contrapropuestas" : "Generar contrapropuestas"}
+            </button>
+          )}
+          {analizado && (
+            <button onClick={() => setCorreoAbierto(true)} disabled={analizando}
+              className="rounded-lg border border-slate-300 px-3 py-1 hover:bg-slate-50 disabled:opacity-60">
+              Redactar correo
+            </button>
+          )}
+          {analizado && (
+            <button onClick={descargarInforme} disabled={descargandoInforme || analizando}
+              className="rounded-lg border border-slate-300 px-3 py-1 hover:bg-slate-50 disabled:opacity-60">
+              {descargandoInforme ? "Generando informe..." : "Descargar informe"}
+            </button>
+          )}
+          <button onClick={() => setConfirmarQuitar(true)} className="rounded-lg border border-red-200 px-3 py-1 text-red-700 hover:bg-red-50">
           </button>
           <Link to="/" className="rounded-lg border border-slate-300 px-3 py-1 hover:bg-slate-50">← Volver al panel</Link>
         </div>
       </header>
 
       {error && <p className="mx-6 mt-4 rounded bg-red-50 p-3 text-sm text-red-700">{error}</p>}
+      {generandoCp && (
+        <p className="mx-6 mt-4 rounded bg-blue-50 p-3 text-sm text-blue-800">
+          Redactando una propuesta más equilibrada para cada cláusula de riesgo alto o con advertencia...
+        </p>
+      )}
       {analizando && (
         <p className="mx-6 mt-4 rounded bg-blue-50 p-3 text-sm text-blue-800">
           Buscando normas relacionadas en el corpus legal y evaluando cada cláusula con IA. Suele tardar menos de 20 segundos.
@@ -243,6 +330,11 @@ export default function ContratoPage() {
               {contrato.tiempo_procesamiento_ms !== null && ` en ${(contrato.tiempo_procesamiento_ms / 1000).toFixed(1)} s`}.
               Este diagnóstico es una ayuda y no reemplaza la asesoría de un abogado.
             </p>
+            {conPropuesta.length > 0 && (
+              <p className="text-sm text-slate-700 tabular-nums">
+                Negociación: {conPropuesta.length} de {riesgosas.length} cláusulas con contrapropuesta · {resueltas} con respuesta de la otra parte.
+              </p>
+            )}
           </div>
         </section>
       )}
@@ -287,7 +379,8 @@ export default function ContratoPage() {
           </div>
         </section>
       )}
-
+      {/* Firma electrónica de la versión final (Avance 7) */}
+      {analizado && <PanelFirma idContrato={contrato.id_contrato} onIrAClausula={(idc) => { setFiltro(""); seleccionar(idc); }} />}
       <main className="grid gap-6 p-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
         {/* Cláusulas */}
         <section className="min-w-0 rounded-xl bg-white shadow">
@@ -311,6 +404,12 @@ export default function ContratoPage() {
                       {c.categoria_riesgo && (
                         <span className="rounded bg-slate-100 px-1.5 py-0.5 text-slate-700">{c.categoria_riesgo.nombre}</span>
                       )}
+                      {c.contrapropuesta && (
+                        <span className="rounded px-1.5 py-0.5 font-medium"
+                          style={{ color: c.contrapropuesta.estado.color_hex, backgroundColor: conAlfa(c.contrapropuesta.estado.color_hex, 0.1) }}>
+                          {c.contrapropuesta.estado.nombre}
+                        </span>
+                      )}
                       {c.nivel_riesgo && (c.fundamentos.length > 0 ? (
                         <span className="rounded bg-blue-50 px-1.5 py-0.5 text-blue-700">Con norma</span>
                       ) : (
@@ -331,6 +430,9 @@ export default function ContratoPage() {
                       El corpus legal no tiene normas sobre este tema, así que la cláusula se evaluó con criterios
                       generales de equidad y redacción. El administrador puede cargar la ley correspondiente.
                     </p>
+                  )}
+                  {activa && analizado && c.nivel_riesgo && c.nivel_riesgo.codigo !== "BAJO" && (
+                    <Contrapropuesta idContrato={contrato.id_contrato} clausula={c} onActualizado={setContrato} />
                   )}
                   {activa && c.fundamentos.length > 0 && (
                     <div className="space-y-2 px-4 pb-4">
@@ -356,6 +458,23 @@ export default function ContratoPage() {
         <VisorContrato contrato={contrato} pagina={pagina} onPagina={setPagina}
           seleccionada={seleccionada} onSeleccionar={seleccionar} filtro={filtro} />
       </main>
+      <ModalCorreo
+        abierto={correoAbierto}
+        idContrato={contrato.id_contrato}
+        hayCondiciones={hayCondicionesPendientes}
+        onCerrar={() => setCorreoAbierto(false)}
+      />
+
+      <ModalConfirmacion
+        abierto={confirmarQuitar}
+        tono="peligro"
+        titulo="Quitar contrato del historial"
+        mensaje={`"${contrato.nombre_archivo}" dejará de aparecer en tu historial junto con su análisis.`}
+        textoConfirmar="Quitar"
+        procesando={quitando}
+        onConfirmar={inactivar}
+        onCancelar={() => setConfirmarQuitar(false)}
+      />
     </div>
   );
 }

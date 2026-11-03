@@ -73,6 +73,32 @@ export interface ClausulaContrato {
   categoria_riesgo: { codigo: string; nombre: string } | null;
   explicacion: string | null;
   fundamentos: Fundamento[];
+  contrapropuesta: Contrapropuesta | null;
+}
+
+
+export type CodigoEstadoContrapropuesta = "GENERADA" | "ACEPTADA" | "MODIFICADA" | "RECHAZADA";
+
+/** Redacción alternativa de una cláusula riesgosa y en qué quedó la negociación. */
+export interface Contrapropuesta {
+  id_contrapropuesta: number;
+  estado: { codigo: CodigoEstadoContrapropuesta; nombre: string; color_hex: string };
+  texto_propuesto: string;
+  texto_acordado: string | null;
+  justificacion: string | null;
+  fecha_modificacion: string | null;
+}
+
+export type CodigoTonoCorreo = "FORMAL" | "CORDIAL";
+
+/** Correo de negociación redactado para la otra parte. */
+export interface CorreoNegociacion {
+  id_correo: number;
+  destinatario: string | null;
+  tono: { codigo: CodigoTonoCorreo; nombre: string };
+  asunto: string;
+  cuerpo: string;
+  fecha_creacion: string;
 }
 
 export type CodigoRolParte = "PRESTADOR" | "CONTRATANTE";
@@ -183,4 +209,53 @@ export interface ResultadoBusqueda {
   modelo: string;
   tiempo_ms: number;
   resultados: FragmentoEncontrado[];
+}
+
+
+// ------------------------------------------------------- firma electrónica
+export type EstadoFirma = "PENDIENTE" | "FIRMADO_PARCIAL" | "FIRMADO_COMPLETO" | "INVALIDO";
+
+/** Firma contenida en la versión final, con los datos públicos de su certificado. */
+export interface FirmaDocumento {
+  numero_orden: number;
+  titular: string;
+  identificacion: string | null;
+  emisor: string;
+  numero_serie: string;
+  vigencia_hasta: string;
+  fecha_firma: string;
+  motivo: string | null;
+  en_plataforma: boolean;
+  firmante: string | null;
+  es_integra: boolean;
+  es_confiable: boolean;
+  fecha_verificacion: string;
+}
+
+/** Si la redacción aceptada en la negociación aparece en la versión final. */
+export interface CambioAcordado {
+  id_clausula: number;
+  numero_clausula: number;
+  titulo_clausula: string | null;
+  estado: string;
+  estado_nombre: string;
+  porcentaje: number;
+  resultado: "INCLUIDA" | "PARCIAL" | "NO_ENCONTRADA";
+}
+
+/** Versión final negociada que se firma electrónicamente. */
+export interface DocumentoFirma {
+  id_documento_firma: number;
+  numero_version: number;
+  nombre_archivo: string;
+  hash_archivo: string;
+  hash_vigente: string;
+  numero_firmas: number;
+  numero_firmas_requeridas: number;
+  estado_firma: EstadoFirma;
+  fecha_creacion: string;
+  ya_firme: boolean;
+  raices_confianza: number;
+  firmas: FirmaDocumento[];
+  cambios: CambioAcordado[] | null;
 }

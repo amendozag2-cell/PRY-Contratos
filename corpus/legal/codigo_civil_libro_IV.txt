@@ -34,21 +34,6 @@ Art. 1555.- Si el deudor cumple solamente una parte de la obligación principal,
 acepta esa parte, tendrá derecho para que se rebaje proporcionalmente la pena estipulada
 por la falta de cumplimiento de la obligación principal.
 
-Art. 1556.- Cuando la obligación contraída con cláusula penal es de cosa divisible, la pena,
-del mismo modo que la obligación principal, se divide entre los herederos del deudor, a
-prorrata de sus cuotas hereditarias. El heredero que contraviene a la obligación incurre,
-pues, en aquella parte de la pena que corresponde a su cuota hereditaria; y el acreedor no
-tendrá acción alguna contra los coherederos que no han contravenido a la obligación.
-Exceptúese el caso en que, habiéndose puesto la cláusula penal con la intención expresa de
-que no pudiera ejecutarse parcialmente el pago, uno de los herederos ha impedido el pago
-total. Podrá entonces exigirse a este heredero toda la pena, o a cada uno su respectiva cuota,
-quedándole a salvo su recurso contra el heredero infractor.
-Lo mismo se observará cuando la obligación contraída con cláusula penal es de cosa
-indivisible.
-
-Art. 1557.- Si la pena estuviere asegurada con hipoteca, podrá perseguirse ésta por toda la
-pena, salvo el recurso de indemnización contra quien hubiere lugar.
-
 Art. 1558.- Podrá exigirse la pena en cuantos casos se hubiere estipulado, sin que pueda
 alegar el deudor que la inejecución de lo pactado no ha inferido perjuicio al acreedor o le
 ha producido beneficio.
@@ -76,3 +61,197 @@ puede ser invalidado sino por su consentimiento mutuo o por causas legales.
 Art. 1562.- Los contratos deben ejecutarse de buena fe, y por consiguiente obligan, no sólo
 a lo que en ellos se expresa, sino a todas las cosas que emanan precisamente de la
 naturaleza de la obligación, o que, por la ley o la costumbre, pertenecen a ella.
+
+Art. 1563.- El deudor no es responsable sino de la culpa lata en los contratos que por su
+naturaleza sólo son útiles al acreedor; es responsable de la leve en los contratos que se
+hacen para beneficio recíproco de las partes; y de la levísima, en los contratos en que el
+deudor es el único que reporta beneficio.
+El deudor no es responsable del caso fortuito, a menos que se haya constituido en mora,
+siendo el caso fortuito de los que no hubieran dañado a la cosa debida, si hubiese sido
+entregada al acreedor, o que el caso fortuito haya sobrevenido por su culpa.
+La prueba de la diligencia o cuidado incumbe al que ha debido emplearlo; y la prueba del
+caso fortuito, al que lo alega.
+Todo lo cual se entiende sin perjuicio de las disposiciones especiales de las leyes, y de las
+estipulaciones expresas de las partes.
+Art. 1564.- La obligación de dar contiene la de entregar la cosa; y si ésta es una especie o
+cuerpo cierto, contiene, además, la de conservarlo hasta la entrega, so pena de pagar los
+perjuicios al acreedor que no se ha constituido en mora de recibir.
+Art. 1565.- La obligación de conservar la cosa exige que se emplee en su custodia el debido
+cuidado.
+Art. 1566.- El riesgo del cuerpo cierto cuya entrega se deba, será siempre de cargo del
+acreedor; salvo que el deudor se constituya en mora de efectuarla, o que se haya
+comprometido a entregar una misma cosa a dos o más personas, por obligaciones distintas.
+En cualquiera de estos casos, será de cargo del deudor el riesgo de la cosa, hasta su entrega.
+Art. 1567.- El deudor está en mora:
+1.- Cuando no ha cumplido la obligación dentro del término estipulado, salvo que la ley, en
+casos especiales, exija que se requiera al deudor para constituirle en mora;
+2.- Cuando la cosa no ha podido ser dada o ejecutada sino dentro de cierto espacio de
+tiempo, y el deudor lo ha dejado pasar sin darla o ejecutarla; y,
+3.- En los demás casos, cuando el deudor ha sido judicialmente reconvenido por el acreedor.
+Art. 1568.- En los contratos bilaterales ninguno de los contratantes está en mora, dejando
+de cumplir lo pactado, mientras el otro no lo cumple por su parte, o no se allana a cumplirlo
+en la forma y tiempo debidos.
+Art. 1569.- Si la obligación es de hacer, y el deudor se constituye en mora, podrá pedir el
+acreedor, junto con la indemnización de la mora, cualquiera de estas dos cosas, a elección
+suya:
+1.- Que se le autorice para hacerla ejecutar por un tercero, a expensas del deudor; y,
+2.- Que el deudor le indemnice los perjuicios resultantes de la infracción del contrato.
+Art. 1570.- La promesa de celebrar un contrato no produce obligación alguna; salvo que
+concurran las circunstancias siguientes:
+1.- Que la promesa conste por escrito; y por escritura pública, cuando fuere de celebrar un
+contrato para cuya validez se necesita de tal solemnidad, conforme a las disposiciones de
+este Código;
+2.- Que el contrato prometido no sea de los que las leyes declaran ineficaces;
+3.- Que la promesa contenga un plazo o condición que fije la época de la celebración del
+contrato; y, 
+4.- Que en ella se especifique de tal manera el contrato prometido, que sólo falten, para
+que sea perfecto, la tradición de la cosa, o las solemnidades que las leyes prescriban.
+Concurriendo estas circunstancias habrá lugar a lo prevenido en el artículo precedente.
+Art. 1571.- Toda obligación de no hacer una cosa se resuelve en la de indemnizar los
+perjuicios, si el deudor contraviene y no puede deshacerse lo hecho.
+Pudiendo destruirse la cosa hecha, y siendo su destrucción necesaria para el objeto que se
+tuvo en mira al celebrar el contrato, estará el deudor obligado a ella, o autorizado el
+acreedor para que la lleve a ejecución a expensas del deudor.
+Si dicho objeto puede obtenerse cumplidamente por otros medios, será oído el deudor que
+se allane a prestarlos.
+El acreedor quedará de todos modos indemne.
+Art. 1572.- La indemnización de perjuicios comprende el daño emergente y el lucro cesante,
+ya provengan de no haberse cumplido la obligación, o de haberse cumplido
+imperfectamente, o de haberse retardado el cumplimiento.
+Exceptúanse los casos en que la ley la limita al daño emergente.
+Exceptúanse también las indemnizaciones por daño moral determinadas en el Título XXXIII
+del Libro IV de este Código.
+Art. 1573.- Se debe la indemnización de perjuicios desde que el deudor se ha constituido
+en mora, o, si la obligación es de no hacer, desde el momento de la contravención.
+Art. 1574.- Si no se puede imputar dolo al deudor, sólo es responsable de los perjuicios que
+se previeron o pudieron preverse al tiempo del contrato. Pero si hay dolo, es responsable
+de todos los perjuicios que fueron una consecuencia inmediata o directa de no haberse
+cumplido la obligación, o de haberse demorado su cumplimiento.
+La mora causada por fuerza mayor o caso fortuito no da lugar a indemnización de perjuicios.
+Las estipulaciones de los contratantes podrán modificar estas reglas.
+Art. 1575.- Si la obligación es de pagar una cantidad de dinero, la indemnización de
+perjuicios por la mora está sujeta a las reglas siguientes:
+1.- Se siguen debiendo los intereses convencionales, si se ha pactado un interés superior al
+legal, o empiezan a deberse los intereses legales, en el caso contrario; quedando, sin
+embargo, en su fuerza las disposiciones especiales que autoricen el cobro de los intereses
+corrientes, en ciertos casos;
+2.- El acreedor no tiene necesidad de justificar perjuicios cuando sólo cobra intereses. En
+tal caso basta el hecho del retardo;
+3.- Los intereses atrasados no producen interés; y,
+4.- La regla anterior se aplica a toda especie de rentas, cánones y pensiones periódicas.
+
+Art. 1576.- Conocida claramente la intención de los contratantes, debe estarse a ella más
+que a lo literal de las palabras.
+Art. 1577.- Por generales que sean los términos de un contrato, sólo se aplicarán a la
+materia sobre que se ha contratado.
+Art. 1578.- El sentido en que una cláusula puede surtir algún efecto deberá preferirse a
+aquél en que no sea capaz de surtir efecto alguno.
+Art. 1579.- En los casos en que no apareciere voluntad contraria, deberá estarse a la
+interpretación que más bien cuadre con la naturaleza del contrato.
+Las cláusulas de uso común se presumen aunque no se expresen.
+Art. 1580.- Las cláusulas de un contrato se interpretarán unas por otras, dándose a cada
+una el sentido que mejor convenga al contrato en su totalidad.
+Podrán también interpretarse por las de otro contrato entre las mismas partes y sobre la
+misma materia.
+O por la aplicación práctica que hayan hecho de ellas ambas partes, o una de las partes con
+aprobación de la otra.
+Art. 1581.- Cuando en un contrato se ha expresado un caso para explicar la obligación, no
+se entenderá por sólo eso haberse querido restringir la convención a ese caso, excluyendo
+los otros a que naturalmente se extienda.
+Art. 1582.- No pudiendo aplicarse ninguna de las reglas precedentes de interpretación, se
+interpretarán las cláusulas ambiguas a favor del deudor.
+Pero las cláusulas ambiguas que hayan sido extendidas o dictadas por una de las partes, sea
+acreedora o deudora, se interpretarán contra ella, siempre que la ambigüedad provenga de
+la falta de una explicación que haya debido darse por ella.
+
+Art. 1930.- Si el artífice suministra la materia para la confección de una obra material, el
+contrato es de venta, pero no se perfecciona sino por la aprobación del que ordenó la obra.
+Por consiguiente, el peligro de la cosa no pertenece al que ordenó la obra sino desde su
+aprobación, salvo que se haya constituido en mora de declarar si la aprueba o no.
+Si la materia es suministrada por la persona que encargó la obra, el contrato es de
+arrendamiento.
+Si la materia principal es suministrada por el que ha ordenado la obra, poniendo el artífice
+lo demás, el contrato es de arrendamiento. En el caso contrario, de venta.
+El arrendamiento de obra se sujeta a las reglas generales del contrato de arrendamiento,
+sin perjuicio de las especiales que siguen.
+Art. 1931.- Si no se ha fijado precio, se presumirá que las partes han convenido en el que
+ordinariamente se paga por la misma especie de obra, y a falta de éste, por el que se
+estimare equitativo, a juicio de peritos.
+Art. 1932.- Si se ha convenido en dar a un tercero la facultad de fijar el precio, y muriere
+éste antes de procederse a la ejecución de la obra, será nulo el contrato. Si después de
+haberse procedido a ejecutar la obra, se fijará el precio por peritos.
+Art. 1933.- Habrá lugar a reclamación de perjuicios, según las reglas generales de los
+contratos, siempre que por una o por otra parte no se haya ejecutado lo convenido, o se
+haya retardado su ejecución.
+Por consiguiente, el que encargó la obra, aún en el caso de haberse estipulado un precio
+único y total por ella, podrá hacerla cesar, pagando al artífice todos los costos, y dándole lo
+que valga el trabajo hecho, y lo que hubiera podido ganar en la obra.
+Art. 1934.- La pérdida de la materia recae sobre el dueño.
+Por consiguiente, la pérdida de la materia suministrada por el que ordenó la obra, pertenece
+a éste; y no es responsable el artífice sino cuando la materia perece por su culpa, o por culpa
+de las personas que le sirven.
+Aunque la materia no perezca por culpa del artífice, ni por la de las personas que le sirven,
+no podrá el artífice reclamar el precio, sino en los casos siguientes:
+1.- Si la obra ha sido reconocida y aprobada;
+2.- Si no ha sido reconocida y aprobada por mora del que encargó la obra; y,
+3.- Si la cosa perece por vicio de la materia suministrada por el que encargó la obra; salvo
+que el vicio sea de aquellos que el artífice, por su oficio, haya debido conocer, o que
+conociéndolo no haya dado aviso oportuno.
+Art. 1935.- El reconocimiento puede hacerse parcialmente cuando se ha convenido en que
+la obra se apruebe por partes.
+Art. 1936.- Si el que encargó la obra alegare no haberse ejecutado debidamente, se
+nombrarán, por las dos partes, peritos que decidan.
+Siendo fundada la alegación del que encargó la obra, el artífice podrá ser obligado, a
+elección del que encargó la obra, a hacerla de nuevo o a la indemnización de perjuicios.
+La restitución de los materiales podrá hacerse con otros de igual calidad, o en dinero.
+Art. 1939.- Todos los contratos para la construcción de una obra se resuelven por la muerte
+del artífice o del empresario; y si hay trabajos o materiales preparados, que puedan ser
+útiles para la obra de que se trata, el que la encargó estará obligado a recibirlos y a pagar
+su valor. Lo que corresponda en razón de los trabajos hechos se calculará
+proporcionalmente, tomando en consideración el precio estipulado para toda la obra.
+Por la muerte del que encargó la obra no se resuelve el contrato.
+Art. 1940.- Las disposiciones de este parágrafo se aplicarán a los contratos para la
+construcción de una obra material, en las relaciones jurídicas y en los casos que no
+estuvieren contemplados en el Código del Trabajo y las leyes especiales respectivas.
+
+Art. 1941.- Las obras inmateriales, o en que predomina la inteligencia sobre la obra de
+mano, como una composición literaria, se sujetan a las disposiciones especiales de los Arts.
+1931, 1932, 1933 y 1936.
+Art. 1942.- Respecto de cada una de las obras parciales en que consista el servicio, se
+observará lo dispuesto en el artículo anterior.
+Art. 1943.- Cualquiera de las dos partes podrá dar fin al servicio cuando quiera, o con el
+desahucio que se hubiere estipulado.
+Si la retribución consiste en pensiones periódicas, cualquiera de las dos partes deberá dar
+noticia a la otra de su intención de dar fin al contrato, aunque en éste no se haya estipulado
+desahucio; y la anticipación será de medio período, a lo menos.
+Art. 1944.- Si para prestar el servicio se ha hecho mudar de residencia al que lo presta, se
+abonarán por la otra parte los gastos razonables de ida y vuelta.
+Art. 1945.- Si el que presta el servicio se retira intempestivamente, o su mala conducta da
+motivo para despedirle, no podrá reclamar cosa alguna en razón de desahucio o de gastos
+de viaje.
+Art. 1946.- Los artículos precedentes se aplican a los servicios que, según el Art. 2022, se
+sujetan a las reglas del mandato, en lo que no fueren contrarios a ellas.
+Art. 1947.- Los servicios inmateriales que consisten en una larga serie de actos, como los de
+los escritores asalariados para la prensa, secretarios de personas privadas, preceptores,
+ayos, actores y cantores, se sujetan a las disposiciones del Código del Trabajo y a las leyes
+especiales respectivas.
+
+Art. 1510.- El plazo es la época que se fija para el cumplimiento de la obligación, y puede
+ser expreso o tácito. Es tácito el indispensable para cumplirla.
+No podrá el juez, sino en casos especiales que las leyes designen, señalar plazo para el
+cumplimiento de una obligación. Sólo podrá interpretar el concebido en términos vagos u
+oscuros, sobre cuya inteligencia y aplicación discuerden las partes.
+Art. 1511.- Lo que se paga antes de cumplirse el plazo no está sujeto a restitución.
+Esta regla no se aplica a los plazos que tienen valor de condiciones.
+Art. 1512.- El pago de la obligación no puede exigirse antes de expirar el plazo, si no es:
+1o.- Al deudor constituido en quiebra o que se halle en notoria insolvencia; y,
+2o.- Al deudor cuyas cauciones, por hecho o culpa suya, se han extinguido o han disminuido
+considerablemente de valor. Pero, en este caso, el deudor podrá reclamar el beneficio del
+plazo, renovando o mejorando las cauciones.
+Art. 1513.- El deudor puede renunciar el plazo, a menos que el testador haya dispuesto, o
+las partes estipulado lo contrario, o que la anticipación del pago acarree al acreedor un
+perjuicio que por medio del plazo se propuso manifiestamente evitar, o cuando quiera
+hacerse el pago por consignación.
+En el contrato de mutuo a interés se observará lo dispuesto en el Art. 2107.
+Art. 1514.- Lo dicho en el Título IV del Libro III sobre asignaciones testamentarias a día, se
+aplica a las convenciones.

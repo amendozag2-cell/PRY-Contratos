@@ -160,6 +160,10 @@ def inactivar_documento(db: Session, documento: DocumentoRag, administrador: Usu
     documento.usuario_modificacion = administrador.id_usuario
     documento.fecha_modificacion = datetime.now(timezone.utc)
 
+def reactivar_documento(db: Session, documento: DocumentoRag, administrador: Usuario) -> None:
+    documento.estado = ESTADO_ACTIVO
+    documento.usuario_modificacion = administrador.id_usuario
+    documento.fecha_modificacion = datetime.now(timezone.utc)
 
 @dataclass
 class ResultadoBusqueda:

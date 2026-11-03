@@ -192,7 +192,7 @@ def _resumen(clausulas: list[Clausula], niveles: dict[int, NivelRiesgo], categor
         f"{seguras} {'segura' if seguras == 1 else 'seguras'}."
     )
     if altos:
-        texto += " Revise antes de firmar: " + "; ".join(altos) + "."
+        texto += " Conviene negociar: " + "; ".join(altos) + "."
     else:
         texto += " No se detectaron cláusulas de riesgo alto."
 

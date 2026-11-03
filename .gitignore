@@ -3,3 +3,13 @@
 .vscode/
 backend/storage/
 corpus/fuentes/
+# Certificados de firma: NUNCA al repositorio
+*.p12
+*.pfx
+*.key
+certificados_prueba/
+backend/certificados_confianza/
+*.p12
+*.pfx
+*.key
+certificados_prueba/

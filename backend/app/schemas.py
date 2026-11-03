@@ -106,6 +106,21 @@ class FundamentoSalida(BaseModel):
     contenido: str
     similitud: float
 
+class EstadoContrapropuestaSalida(BaseModel):
+    codigo: str
+    nombre: str
+    color_hex: str
+
+
+class ContrapropuestaSalida(BaseModel):
+    """Redacción alternativa de una cláusula riesgosa y en qué quedó la negociación."""
+
+    id_contrapropuesta: int
+    estado: EstadoContrapropuestaSalida
+    texto_propuesto: str
+    texto_acordado: str | None
+    justificacion: str | None
+    fecha_modificacion: datetime | None
 
 class ClausulaSalida(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -120,6 +135,7 @@ class ClausulaSalida(BaseModel):
     categoria_riesgo: OpcionCatalogo | None = None
     explicacion: str | None = None
     fundamentos: list[FundamentoSalida] = []
+    contrapropuesta: ContrapropuestaSalida | None = None
 
 
 class CoberturaSalida(BaseModel):
@@ -167,11 +183,89 @@ class ContextoEntrada(BaseModel):
     def vacio_a_nulo(cls, valor):
         return None if isinstance(valor, str) and not valor.strip() else valor
 
+# ------------------------------------------------------------ negociación
+class ContrapropuestasEntrada(BaseModel):
+    """Cláusulas para las que se redacta contrapropuesta; vacío = todas las riesgosas."""
+
+    ids_clausula: list[int] | None = Field(default=None, max_length=200)
+
+
+class RespuestaContrapropuestaEntrada(BaseModel):
+    """Lo que respondió la otra parte a la contrapropuesta."""
+
+    model_config = ConfigDict(str_strip_whitespace=True)
+
+    estado: Literal["ACEPTADA", "MODIFICADA", "RECHAZADA"]
+    texto_acordado: str | None = Field(default=None, max_length=10000)
+
+
+class CorreoEntrada(BaseModel):
+    model_config = ConfigDict(str_strip_whitespace=True)
+
+    destinatario: str | None = Field(default=None, max_length=150)
+    tono: Literal["FORMAL", "CORDIAL"] = "FORMAL"
+    incluir_advertencias: bool = False
+    incluir_condiciones: bool = True
+
+
+class CorreoSalida(BaseModel):
+    id_correo: int
+    destinatario: str | None
+    tono: OpcionCatalogo
+    asunto: str
+    cuerpo: str
+    fecha_creacion: datetime
+
 class CargaContratoSalida(BaseModel):
     contrato: ContratoSalida
     paginas_ocr: list[int]
     tiempo_ms: int
 
+# ------------------------------------------------------- firma electrónica
+class FirmaSalida(BaseModel):
+    """Firma contenida en la versión final, con los datos públicos de su certificado."""
+
+    numero_orden: int
+    titular: str
+    identificacion: str | None
+    emisor: str
+    numero_serie: str
+    vigencia_hasta: datetime
+    fecha_firma: datetime
+    motivo: str | None
+    en_plataforma: bool
+    firmante: str | None
+    es_integra: bool
+    es_confiable: bool
+    fecha_verificacion: datetime
+
+
+class CambioAcordadoSalida(BaseModel):
+    """Si la redacción aceptada en la negociación aparece en la versión final."""
+
+    id_clausula: int
+    numero_clausula: int
+    titulo_clausula: str | None
+    estado: str
+    estado_nombre: str
+    porcentaje: int
+    resultado: Literal["INCLUIDA", "PARCIAL", "NO_ENCONTRADA"]
+
+
+class DocumentoFirmaSalida(BaseModel):
+    id_documento_firma: int
+    numero_version: int
+    nombre_archivo: str
+    hash_archivo: str
+    hash_vigente: str
+    numero_firmas: int
+    numero_firmas_requeridas: int
+    estado_firma: Literal["PENDIENTE", "FIRMADO_PARCIAL", "FIRMADO_COMPLETO", "INVALIDO"]
+    fecha_creacion: datetime
+    ya_firme: bool
+    raices_confianza: int
+    firmas: list[FirmaSalida]
+    cambios: list[CambioAcordadoSalida] | None
 
 # ----------------------------------------------------------- administración
 class AuditoriaSalida(BaseModel):
