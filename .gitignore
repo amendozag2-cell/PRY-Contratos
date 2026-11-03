@@ -13,3 +13,5 @@ backend/certificados_confianza/
 *.pfx
 *.key
 certificados_prueba/
+backend/.pruebas_tmp/
+.pytest_cache/

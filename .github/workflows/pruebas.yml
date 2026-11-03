@@ -1,0 +1,53 @@
+name: Pruebas
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  backend:
+    name: Backend (pytest)
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: pgvector/pgvector:pg18
+        env:
+          POSTGRES_USER: contratos
+          POSTGRES_PASSWORD: contratos_ci
+          POSTGRES_DB: contratos_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U contratos -d contratos_db"
+          --health-interval 5s
+          --health-retries 10
+    env:
+      # Credenciales solo de la base temporal de GitHub Actions; no son las del proyecto
+      DATABASE_URL: postgresql+psycopg://contratos:contratos_ci@localhost:5432/contratos_db
+      JWT_SECRET: secreto-solo-para-ci-no-usar-en-produccion-2026
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Instalar dependencias
+        run: uv sync --frozen
+      - name: Ejecutar pruebas
+        run: uv run pytest
+
+  frontend:
+    name: Frontend (compilación)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run build
