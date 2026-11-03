@@ -210,3 +210,52 @@ export interface ResultadoBusqueda {
   tiempo_ms: number;
   resultados: FragmentoEncontrado[];
 }
+
+
+// ------------------------------------------------------- firma electrónica
+export type EstadoFirma = "PENDIENTE" | "FIRMADO_PARCIAL" | "FIRMADO_COMPLETO" | "INVALIDO";
+
+/** Firma contenida en la versión final, con los datos públicos de su certificado. */
+export interface FirmaDocumento {
+  numero_orden: number;
+  titular: string;
+  identificacion: string | null;
+  emisor: string;
+  numero_serie: string;
+  vigencia_hasta: string;
+  fecha_firma: string;
+  motivo: string | null;
+  en_plataforma: boolean;
+  firmante: string | null;
+  es_integra: boolean;
+  es_confiable: boolean;
+  fecha_verificacion: string;
+}
+
+/** Si la redacción aceptada en la negociación aparece en la versión final. */
+export interface CambioAcordado {
+  id_clausula: number;
+  numero_clausula: number;
+  titulo_clausula: string | null;
+  estado: string;
+  estado_nombre: string;
+  porcentaje: number;
+  resultado: "INCLUIDA" | "PARCIAL" | "NO_ENCONTRADA";
+}
+
+/** Versión final negociada que se firma electrónicamente. */
+export interface DocumentoFirma {
+  id_documento_firma: number;
+  numero_version: number;
+  nombre_archivo: string;
+  hash_archivo: string;
+  hash_vigente: string;
+  numero_firmas: number;
+  numero_firmas_requeridas: number;
+  estado_firma: EstadoFirma;
+  fecha_creacion: string;
+  ya_firme: boolean;
+  raices_confianza: number;
+  firmas: FirmaDocumento[];
+  cambios: CambioAcordado[] | null;
+}

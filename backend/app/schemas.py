@@ -221,6 +221,51 @@ class CargaContratoSalida(BaseModel):
     paginas_ocr: list[int]
     tiempo_ms: int
 
+# ------------------------------------------------------- firma electrónica
+class FirmaSalida(BaseModel):
+    """Firma contenida en la versión final, con los datos públicos de su certificado."""
+
+    numero_orden: int
+    titular: str
+    identificacion: str | None
+    emisor: str
+    numero_serie: str
+    vigencia_hasta: datetime
+    fecha_firma: datetime
+    motivo: str | None
+    en_plataforma: bool
+    firmante: str | None
+    es_integra: bool
+    es_confiable: bool
+    fecha_verificacion: datetime
+
+
+class CambioAcordadoSalida(BaseModel):
+    """Si la redacción aceptada en la negociación aparece en la versión final."""
+
+    id_clausula: int
+    numero_clausula: int
+    titulo_clausula: str | None
+    estado: str
+    estado_nombre: str
+    porcentaje: int
+    resultado: Literal["INCLUIDA", "PARCIAL", "NO_ENCONTRADA"]
+
+
+class DocumentoFirmaSalida(BaseModel):
+    id_documento_firma: int
+    numero_version: int
+    nombre_archivo: str
+    hash_archivo: str
+    hash_vigente: str
+    numero_firmas: int
+    numero_firmas_requeridas: int
+    estado_firma: Literal["PENDIENTE", "FIRMADO_PARCIAL", "FIRMADO_COMPLETO", "INVALIDO"]
+    fecha_creacion: datetime
+    ya_firme: bool
+    raices_confianza: int
+    firmas: list[FirmaSalida]
+    cambios: list[CambioAcordadoSalida] | None
 
 # ----------------------------------------------------------- administración
 class AuditoriaSalida(BaseModel):

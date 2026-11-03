@@ -6,6 +6,7 @@ import CampoContexto from "../components/CampoContexto";
 import Contrapropuesta from "../components/Contrapropuesta";
 import ModalConfirmacion from "../components/ModalConfirmacion";
 import ModalCorreo from "../components/ModalCorreo";
+import PanelFirma from "../components/PanelFirma";
 import VisorContrato from "../components/VisorContrato";
 import { COLOR_NEUTRO, conAlfa } from "../utils/colores";
 import type { ClausulaContrato, CodigoNivel, ContratoDetalle, OpcionCatalogo } from "../types";
@@ -378,7 +379,8 @@ export default function ContratoPage() {
           </div>
         </section>
       )}
-
+      {/* Firma electrónica de la versión final (Avance 7) */}
+      {analizado && <PanelFirma idContrato={contrato.id_contrato} onIrAClausula={(idc) => { setFiltro(""); seleccionar(idc); }} />}
       <main className="grid gap-6 p-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
         {/* Cláusulas */}
         <section className="min-w-0 rounded-xl bg-white shadow">
