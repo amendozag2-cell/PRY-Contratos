@@ -1,0 +1,13 @@
+.venv
+__pycache__
+**/__pycache__
+.pytest_cache
+.ruff_cache
+.pruebas_tmp
+storage
+certificados_confianza
+tests
+*.p12
+*.pfx
+*.key
+.env

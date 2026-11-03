@@ -16,5 +16,41 @@ services:
       interval: 5s
       retries: 10
 
+  # --- Sistema completo (Avance 8). Solo se levanta con: docker compose --profile app up -d --build
+  backend:
+    build: ./backend
+    container_name: contratos_backend
+    profiles: ["app"]
+    env_file: .env
+    environment:
+      # Dentro de Docker la base se llama "db", no "localhost"
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      CORS_ORIGINS: '["http://localhost:8080", "http://localhost:5173"]'
+      TESSDATA_PREFIX: /usr/share/tesseract-ocr/5/tessdata
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      # Los mismos archivos que usa el backend en desarrollo
+      - ./backend/storage:/app/storage
+      - ./backend/certificados_confianza:/app/certificados_confianza:ro
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: /api
+    container_name: contratos_frontend
+    profiles: ["app"]
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
 volumes:
   pgdata:
